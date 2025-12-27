@@ -266,6 +266,16 @@
     font-size: 22px;
     transition: 0.3s ease;
   }
+
+  .social-links {
+    position: relative;
+    z-index: 10;
+  }
+  
+  .social-links a {
+    pointer-events: auto;
+  }
+  
   
   .social-links a:hover {
     background: #2563eb;
@@ -702,9 +712,10 @@ a:active {
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, #3b82f6, #2563eb);
-  opacity: 0;
+  opacity: 0.06;
   transition: 0.3s ease;
   z-index: 0;
+  pointer-events: none;
 }
 
 .project-card:hover::before {
@@ -771,6 +782,8 @@ a:active {
 .project-actions {
   display: flex;
   gap: 12px;
+  position: relative;
+  z-index: 5;
 }
 
 .project-actions a {
@@ -780,6 +793,7 @@ a:active {
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
+  pointer-events: auto;
 }
 
 .project-actions .source {
