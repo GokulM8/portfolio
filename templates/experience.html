@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gokul | Experience</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<div class="nav-wrapper">
+  <header class="navbar">
+    <div class="logo">Portfolio</div>
+
+    <nav class="nav-links" id="navMenu">
+      <a href="/">Home</a>
+      <a href="/#about">About</a>
+      <a href="/experience">Experience</a>
+      <a href="/#skills">Skills</a>
+      <a href="/#projects">Projects</a>
+      <a href="/#email">Contact</a>
+    </nav>
+
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+</div>
+
+<section id="experience" class="projects-section">
+  <div class="projects-header">
+    <span class="section-label">PROFESSIONAL JOURNEY</span>
+    <h2>Internship Experience</h2>
+    <p>
+      A recent internship where I applied software engineering and data skills to real business problems.
+    </p>
+  </div>
+
+  <div class="projects-grid">
+    <div class="project-card fullstack">
+      <div class="project-icon">
+        <i class="bx bx-briefcase"></i>
+      </div>
+      <h4 class="project-tag">INTERNSHIP</h4>
+      <h3>Software Developer Intern — Your Company Name</h3>
+      <p>
+        Worked on production-ready features, collaborated with cross-functional teams, and improved application performance and reliability.
+      </p>
+
+      <div class="tech-tags">
+        <span>Month YYYY - Month YYYY</span>
+        <span>Location / Remote</span>
+      </div>
+
+      <div class="project-actions">
+        <a href="/static/assets/Proforma.pdf" class="source" target="_blank" rel="noopener noreferrer">
+          <i class="bx bxs-file-pdf"></i>
+          View Resume
+        </a>
+        <a href="/" class="primary">Back to Home</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const menuToggle = document.getElementById("menuToggle");
+  const navMenu = document.getElementById("navMenu");
+
+  menuToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+
+  window.addEventListener("scroll", () => {
+    const navbar = document.querySelector(".navbar");
+    if (window.scrollY > 40) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
+</script>
+
+</body>
+</html>

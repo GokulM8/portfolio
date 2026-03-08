@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, redirect, render_template, url_for
 
 app = Flask(__name__)
 
@@ -10,17 +10,17 @@ def home():
 # About Page
 @app.route("/about")
 def about():
-    return render_template("about.html")
+    return redirect(f"{url_for('home')}#about")
 
 # Skills Page
 @app.route("/skills")
 def skills():
-    return render_template("skills.html")
+    return redirect(f"{url_for('home')}#skills")
 
 # Projects Page
 @app.route("/projects")
 def projects():
-    return render_template("projects.html")
+    return redirect(f"{url_for('home')}#projects")
 
 
 if __name__ == "__main__":

@@ -871,6 +871,111 @@ a:active {
   transform: scale(1.08);
 }
 
+/* =======================
+   EXPERIENCE SECTION
+======================= */
+
+.experience-section .projects-header {
+  margin-bottom: 34px;
+}
+
+.experience-grid {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.experience-card {
+  border: 1px solid #e5e7eb;
+  padding: 32px;
+}
+
+.experience-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.experience-head .project-tag {
+  margin-bottom: 8px;
+}
+
+.company-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.company-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.experience-company {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.experience-points {
+  list-style: none;
+  margin: 18px 0 16px;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+  position: relative;
+}
+
+.experience-points::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: linear-gradient(180deg, #93c5fd, #dbeafe);
+}
+
+.experience-points li {
+  position: relative;
+  padding-left: 24px;
+  color: #4b5563;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.experience-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #2563eb;
+  box-shadow: 0 0 0 4px #dbeafe;
+}
+
+@media (max-width: 768px) {
+  .experience-card {
+    padding: 24px;
+  }
+
+  .experience-head {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
 
 /* CONTACT SECTION */
 .contact-email {

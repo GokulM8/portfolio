@@ -15,7 +15,7 @@
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="/static/css/style.css">
 </head>
 
 
@@ -29,6 +29,7 @@
     <nav class="nav-links" id="navMenu">
       <a href="#home">Home</a>
       <a href="#about">About</a>
+      <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#email">Contact</a>
@@ -42,16 +43,6 @@
     </div>
   </header>
 </div>
-
-<script>
-  const menuToggle = document.getElementById("menuToggle");
-  const navMenu = document.getElementById("navMenu");
-
-  menuToggle.addEventListener("click", () => {
-    navMenu.classList.toggle("active");
-  });
-</script>
-
 
 <!-- HERO SECTION -->
 <section id="home" class="hero">
@@ -73,7 +64,7 @@
         View Projects
         <i class="fa-solid fa-arrow-right"></i>
       </a>
-        <a href="static/assets/Proforma.pdf"
+        <a href="/static/assets/Proforma.pdf"
    target="_blank"
    rel="noopener noreferrer"
    class="btn outline">
@@ -86,7 +77,7 @@
       <p class="label">DIGITAL PRESENCE</p>
 
       <div class="social-links">
-        <a href="https://www.github.com/GokulM8" target="_blank" rel="noopener noreferrer"" aria-label="GitHub">
+        <a href="https://www.github.com/GokulM8" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           <i class="fab fa-github"></i>
         </a>
         <a href="https://www.linkedin.com/in/gokul-mallabathula-693a74118/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
@@ -156,6 +147,51 @@
 
 </section>
 
+<!-- Experience Section -->
+<section id="experience" class="projects-section experience-section">
+  <div class="projects-header">
+    <span class="section-label">PROFESSIONAL JOURNEY</span>
+    <h2>Internship Experience</h2>
+    <p>
+      Recently completed internship experience focused on building practical,
+      real-world software solutions.
+    </p>
+  </div>
+
+  <div class="experience-grid">
+    <article class="project-card fullstack experience-card">
+      <div class="experience-head">
+      <div class="company-logo">
+        <img src="/static/assets/Final-Logo-939x1024.png" alt="Zetheta Algorithms Logo">
+      </div>
+        <div>
+          <h4 class="project-tag">PROJECT INTERNSHIP</h4>
+          <h3>Fraud Detection Engineer</h3>
+          <p class="experience-company">Zetheta Algorithms Pvt. Ltd. • Jan 2026 – Mar 2026</p>
+        </div>
+      </div>
+
+      <ul class="experience-points">
+        <li><strong>Anomaly Detection Systems:</strong> Built machine learning models to detect unusual transaction patterns using preprocessing, feature engineering, and model evaluation.</li>
+        <li><strong>OnChain Ponzi Detection:</strong> Developed blockchain fraud analysis workflows using transaction patterns, wallet activity, and smart contract behavior.</li>
+        <li><strong>Cyberwar Banking Defense:</strong> Designed fraud detection mechanisms for banking systems and simulated cyber-attack scenarios affecting financial infrastructure.</li>
+        <li><strong>Financial Literacy RPG Quest:</strong> Contributed to a gamified platform that simulates financial decisions and tracks user learning outcomes.</li>
+      </ul>
+
+      <div class="tech-tags">
+        <span>Python</span>
+        <span>Machine Learning</span>
+        <span>Pandas</span>
+        <span>NumPy</span>
+        <span>Scikit-learn</span>
+        <span>Blockchain Data Analysis</span>
+        <span>Fraud Detection Algorithms</span>
+        <span>Cybersecurity Concepts</span>
+      </div>
+    </article>
+  </div>
+</section>
+
 <!-- My Mission Section -->
 <section class="mission-section">
   <div class="mission-content">
@@ -220,7 +256,7 @@
         <span>Node.js</span>
         <span>Python</span>
         <span>SQLite3</span>
-        <span>Flaskr</span>
+        <span>Flask</span>
       </div>
     </div>
 
@@ -290,7 +326,7 @@
           <i class="bx bxl-github"></i>
           Source
         </a>
-        <a href="#" class="primary">Preview</a>
+        <a href="https://github.com/GokulM8/vehicle-parking-management-system" class="primary" target="_blank" rel="noopener noreferrer">Preview</a>
       </div>
     </div>
 
@@ -321,7 +357,7 @@
           <i class="bx bxl-github"></i>
           Source
         </a>
-        <a href="#" class="primary">Preview</a>
+        <a href="https://github.com/GokulM8/portfolio" class="primary" target="_blank" rel="noopener noreferrer">Preview</a>
       </div>
     </div>
 
@@ -351,7 +387,7 @@
           <i class="bx bxl-github"></i>
           Source
         </a>
-        <a href="#" class="primary">Preview</a>
+        <a href="https://github.com/GokulM8" class="primary" target="_blank" rel="noopener noreferrer">Preview</a>
       </div>
     </div>
 
@@ -379,23 +415,9 @@
   </a>
 </section>
 
-<script>
-  window.addEventListener("scroll", () => {
-    const navbar = document.querySelector(".navbar");
-    if (window.scrollY > 40) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
-    }
-  });
-</script>
-
-
 <!-- Lucide Icons -->
 <script src="https://unpkg.com/lucide@latest"></script>
-<script>
-  lucide.createIcons();
-</script>
+<script src="/static/js/main.js"></script>
 
 </body>
 </html>
