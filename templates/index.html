@@ -3,529 +3,279 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gokul | Portfolio</title>
+  <title>Gokul Mallabathula | Portfolio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-
-  
-  
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icons.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-
-
 <body>
+  <div class="pr">
+    <nav class="nav" id="top">
+      <a class="nav-logo" href="#home" aria-label="Go to home">G</a>
 
-<!-- NAVBAR WRAPPER -->
-<div class="nav-wrapper">
-  <header class="navbar">
-    <div class="logo">Portfolio</div>
+      <button class="nav-toggle" id="menuToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-    <nav class="nav-links" id="navMenu">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#email">Contact</a>
+      <div class="nav-links" id="navMenu">
+        <a class="nl active" href="#home">Home</a>
+        <a class="nl" href="#about">About</a>
+        <a class="nl" href="#experience">Experience</a>
+        <a class="nl" href="#skills">Skills</a>
+        <a class="nl" href="#projects">Projects</a>
+        <a class="nl" href="#contact">Contact</a>
+      </div>
+
+      <a class="nav-cta" href="mailto:gokulmallabathula@gmail.com">Let's Talk</a>
     </nav>
-  
-    <!-- Hamburger -->
-    <div class="menu-toggle" id="menuToggle">
-      <span></span>
-      <span></span>
-      <span></span>
+
+    <main>
+      <section class="hero section-shell" id="home">
+        <div class="hero-left">
+          <div class="hero-avail"><span class="avail-dot"></span> Available for opportunities</div>
+          <p class="hero-greeting">Hello,  I'm <span class="highlight-name">Gokul Mallabathula</span></p>
+          <h1 class="hero-name">Software Developer<br><em>& ML Engineer</em></h1>
+          <p class="hero-role">Building <strong>intelligent health-tech systems</strong> with a data-first mindset. CS student at VIT-AP, India.</p>
+
+          <div class="hero-meta">
+            <div class="hmeta"><i class="ti ti-map-pin" aria-hidden="true"></i> Vijayawada, India</div>
+            <div class="hmeta"><i class="ti ti-circle-check" aria-hidden="true"></i> Available Now</div>
+          </div>
+
+          <div class="hero-btns">
+            <a class="hbtn-p" href="#contact">Hire Me</a>
+            <a class="hbtn-s" href="{{ url_for('static', filename='assets/Proforma.pdf') }}" target="_blank" rel="noopener noreferrer">Download CV</a>
+          </div>
+
+          <div class="hero-socials" aria-label="Social links">
+            <a class="social-ic" href="https://www.github.com/GokulM8" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="ti ti-brand-github" aria-hidden="true"></i></a>
+            <a class="social-ic" href="https://www.linkedin.com/in/gokul-mallabathula-693a74118/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div class="hero-right">
+
+    <div class="avatar-bg">
+        <img src="{{ url_for('static', filename='assets/avatar.png') }}"
+             alt="Gokul Mallabathula"
+             class="profile-avatar">
     </div>
-  </header>
+
+    <div class="avatar-card">
+        <div class="avatar-card-label">PROJECTS</div>
+        <div class="avatar-card-val">5+ Built</div>
+    </div>
+
+    <div class="avatar-card avatar-card2">
+        <div class="avatar-card-label">STATUS</div>
+        <div class="avatar-card-val avatar-open">● Open</div>
+    </div>
+
 </div>
+      </section>
 
-<!-- HERO SECTION -->
-<section id="home" class="hero">
+      <hr class="divider">
 
-  <div class="hero-text">
-    <div class="availability-badge">
-      AVAILABLE FOR NEW OPPORTUNITIES
-    </div>
-    <h1>Hi, I'm <span class="gradient-text">Gokul</span>
-    </h1>
-    <h2>Software Developer & Data Science Enthusiast</h2>
-
-    <p>
-      Building the next generation of web applications with a data-first mindset.
-    </p>
-
-    <div class="buttons">
-      <a href="#projects" class="btn primary">
-        View Projects
-        <i class="fa-solid fa-arrow-right"></i>
-      </a>
-      <a href="{{ url_for('static', filename='assets/Proforma.pdf') }}"
-   target="_blank"
-   rel="noopener noreferrer"
-   class="btn outline">
-   Download Resume
-</a>
-    </div>
-
-    <!-- DIGITAL PRESENCE -->
-    <div class="digital-presence">
-      <p class="label">DIGITAL PRESENCE</p>
-
-      <div class="social-links">
-        <a href="https://www.github.com/GokulM8" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/gokul-mallabathula-693a74118/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<section id="about" class="skills-section">
-
-  <!-- SECTION HEADING -->
-  <div class="skills-header">
-    <h2>What I Do</h2>
-    <p>
-      I specialize in building high-quality digital experiences using modern
-      technologies and data-driven approaches.
-    </p>
-  </div>
-
-  <!-- SKILLS GRID -->
-  <div class="skills-grid">
-    <div class="skill-card">
-      <div class="icon">
-        <i data-lucide="code"></i>
-      </div>
-      <h3>Web Development</h3>
-      <p>
-        Crafting responsive, high-performance web applications using modern
-        frameworks.
-      </p>
-    </div>
-
-    <div class="skill-card">
-      <div class="icon">
-        <i data-lucide="bar-chart-3"></i>
-      </div>
-      <h3>Data Science</h3>
-      <p>
-        Extracting insights from data using Python, ML, and analytics.
-      </p>
-    </div>
-
-    <div class="skill-card">
-      <div class="icon">
-        <i data-lucide="zap"></i>
-      </div>
-      <h3>Problem Solving</h3>
-      <p>
-        Designing efficient solutions to real-world challenges.
-      </p>
-    </div>
-
-    <div class="skill-card">
-      <div class="icon">
-        <i data-lucide="book-open"></i>
-      </div>
-      <h3>Continuous Learning</h3>
-      <p>
-        Staying at the forefront of technology by constantly exploring new frameworks and data modeling paradigms.
-      </p>
-    </div>
-    
-  </div>
-
-</section>
-
-<!-- Experience Section -->
-<section id="experience" class="projects-section experience-section">
-  <div class="projects-header">
-    <span class="section-label">PROFESSIONAL JOURNEY</span>
-    <h2>Internship Experience</h2>
-    <p>
-      Recently completed internship experience focused on building practical,
-      real-world software solutions.
-    </p>
-  </div>
-
-  <div class="experience-grid">
-    <article class="project-card fullstack experience-card">
-      <div class="experience-head">
-        <div class="company-logo">
-          <img src="{{ url_for('static', filename='assets/Final-Logo-939x1024.png') }}" alt="Zetheta Algorithms Logo">
+      <section class="sec" id="about">
+        <div class="sec-head">
+          <p class="sec-eyebrow">About Me</p>
+          <h2 class="sec-title">Who I Am</h2>
         </div>
-        <div>
-          <h4 class="project-tag">PROJECT INTERNSHIP</h4>
-          <h3>Fraud Detection Engineer</h3>
-          <p class="experience-company">Zetheta Algorithms Pvt. Ltd. • Jan 2026 – Mar 2026</p>
+
+        <p class="about-body">
+          I'm a software engineer and data science enthusiast driven by curiosity and impact. I build scalable digital products under <strong>Med2Predict</strong> while combining clean user experiences with intelligent ML systems for health-tech.
+        </p>
+
+        <div class="approach-row">
+          <div class="ap-card"><span class="ap-num">01</span><span class="ap-txt">Understand the problem deeply</span></div>
+          <div class="ap-card"><span class="ap-num">02</span><span class="ap-txt">Build data-driven solutions</span></div>
+          <div class="ap-card"><span class="ap-num">03</span><span class="ap-txt">Ship clean, scalable code</span></div>
         </div>
-      </div>
 
-      <ul class="experience-points">
-        <li><strong>Anomaly Detection Systems:</strong> Built machine learning models to detect unusual transaction patterns using preprocessing, feature engineering, and model evaluation.</li>
-        <li><strong>OnChain Ponzi Detection:</strong> Developed blockchain fraud analysis workflows using transaction patterns, wallet activity, and smart contract behavior.</li>
-        <li><strong>Cyberwar Banking Defense:</strong> Designed fraud detection mechanisms for banking systems and simulated cyber-attack scenarios affecting financial infrastructure.</li>
-        <li><strong>Financial Literacy RPG Quest:</strong> Contributed to a gamified platform that simulates financial decisions and tracks user learning outcomes.</li>
-      </ul>
-
-      <div class="tech-tags">
-        <span>Python</span>
-        <span>Machine Learning</span>
-        <span>Pandas</span>
-        <span>NumPy</span>
-        <span>Scikit-learn</span>
-        <span>Blockchain Data Analysis</span>
-        <span>Fraud Detection Algorithms</span>
-        <span>Cybersecurity Concepts</span>
-      </div>
-    </article>
-
-    <article class="project-card fullstack experience-card">
-      <div class="experience-head">
-        <div class="company-logo">
-          <!-- Replace with Unified Mentor logo if available -->
-          <img src="{{ url_for('static', filename='assets/unified-mentor-logo.png') }}" alt="Unified Mentor Logo">
+        <div class="stats-row">
+          <div class="stat-item"><div class="stat-num">1+</div><div class="stat-lbl">Years Experience</div></div>
+          <div class="stat-item"><div class="stat-num">5+</div><div class="stat-lbl">Projects Built</div></div>
+          <div class="stat-item"><div class="stat-num">2</div><div class="stat-lbl">Research Papers</div></div>
+          <div class="stat-item"><div class="stat-num">2</div><div class="stat-lbl">Internships</div></div>
         </div>
-        <div>
-          <h4 class="project-tag">PROJECT INTERNSHIP</h4>
-          <h3>Machine Learning Engineer</h3>
-          <p class="experience-company">Unified Mentor Pvt. Ltd. • Mar 2026 – Jun 2026</p>
+      </section>
+
+      <section class="sec" id="experience">
+        <div class="sec-head">
+          <p class="sec-eyebrow">Professional Journey</p>
+          <h2 class="sec-title">Experience</h2>
         </div>
+
+        <div class="exp-list">
+          <article class="exp-item">
+            <div class="exp-dot-col"><div class="exp-dot cur"></div><div class="exp-line"></div></div>
+            <div>
+              <div class="exp-role">Machine Learning Engineer Intern</div>
+              <div class="exp-co">Unified Mentor Pvt. Ltd.</div>
+              <div class="exp-pts">
+                <span class="exp-pt">Care Transition CBP</span>
+                <span class="exp-pt">ML Segment Buyer</span>
+                <span class="exp-pt">Python</span><span class="exp-pt">Scikit-learn</span>
+              </div>
+            </div>
+            <div class="exp-date">Mar – Jun 2026</div>
+          </article>
+
+          <article class="exp-item">
+            <div class="exp-dot-col"><div class="exp-dot"></div></div>
+            <div>
+              <div class="exp-role">Fraud Detection Engineer Intern</div>
+              <div class="exp-co">Zetheta Algorithms Pvt. Ltd.</div>
+              <div class="exp-pts">
+                <span class="exp-pt">Anomaly Detection</span>
+                <span class="exp-pt">Blockchain Analysis</span>
+                <span class="exp-pt">Cybersecurity</span>
+              </div>
+            </div>
+            <div class="exp-date">Jan – Mar 2026</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="skills-sec" id="skills">
+        <div class="sec-head">
+          <p class="sec-eyebrow">Technical Arsenal</p>
+          <h2 class="sec-title">Skills</h2>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card">
+            <h3 class="skill-card-title">Frontend</h3>
+            <div class="skill-tags">
+              <span class="sk-tag">React</span><span class="sk-tag">Next.js</span><span class="sk-tag">TypeScript</span><span class="sk-tag">HTML</span><span class="sk-tag">CSS</span><span class="sk-tag">Tailwind</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <h3 class="skill-card-title">Backend & Cloud</h3>
+            <div class="skill-tags">
+              <span class="sk-tag">Python</span><span class="sk-tag">Flask</span><span class="sk-tag">Node.js</span><span class="sk-tag">Supabase</span><span class="sk-tag">Vercel</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <h3 class="skill-card-title">Data Science & AI</h3>
+            <div class="skill-tags">
+              <span class="sk-tag">Scikit-learn</span><span class="sk-tag">XGBoost</span><span class="sk-tag">Pandas</span><span class="sk-tag">TensorFlow</span><span class="sk-tag">ONNX</span><span class="sk-tag">SHAP</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <h3 class="skill-card-title">Tools & Practices</h3>
+            <div class="skill-tags">
+              <span class="sk-tag">Git</span><span class="sk-tag">CI/CD</span><span class="sk-tag">Streamlit</span><span class="sk-tag">Docker</span><span class="sk-tag">Agile</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="skills-sec" id="projects">
+        <div class="sec-head">
+          <p class="sec-eyebrow">Selection of Work</p>
+          <h2 class="sec-title">Featured Projects</h2>
+        </div>
+
+        <div class="proj-grid">
+          <article class="proj-card featured">
+            <div class="proj-type-row">
+              <span class="proj-type">Machine Learning</span>
+              <span class="proj-badge live">● Live</span>
+            </div>
+            <h3 class="proj-title">Safe Pulse</h3>
+            <p class="proj-desc">Cardiovascular disease prediction using XGBoost + ONNX with SHAP explainability. Trained on UCI and Framingham datasets. Deployed under Med2Predict.</p>
+            <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">XGBoost</span><span class="ptag">ONNX</span><span class="ptag">SHAP</span></div>
+            <div class="proj-links">
+              <a class="pl-s" href="https://github.com/GokulM8" target="_blank" rel="noopener noreferrer"><i class="ti ti-brand-github" aria-hidden="true"></i> Source</a>
+              <a class="pl-p" href="https://www.safepulse.in/" target="_blank" rel="noopener noreferrer">Preview →</a>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <div class="proj-type-row">
+              <span class="proj-type">Full Stack</span>
+              <span class="proj-badge live">● Live</span>
+            </div>
+            <h3 class="proj-title">Smart Park</h3>
+            <p class="proj-desc">Complete web-based parking management system with real-time slot tracking, vehicle entry and exit, and an admin dashboard.</p>
+            <div class="proj-tags"><span class="ptag">React</span><span class="ptag">Supabase</span><span class="ptag">TypeScript</span><span class="ptag">Vite</span></div>
+            <div class="proj-links">
+              <a class="pl-s" href="https://github.com/GokulM8/smart-park" target="_blank" rel="noopener noreferrer"><i class="ti ti-brand-github" aria-hidden="true"></i> Source</a>
+              <a class="pl-p" href="https://smart-park-green-eight.vercel.app" target="_blank" rel="noopener noreferrer">Preview →</a>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <div class="proj-type-row">
+              <span class="proj-type">Data Science</span>
+              <span class="proj-badge">Research</span>
+            </div>
+            <h3 class="proj-title">Care Transition Analytics</h3>
+            <p class="proj-desc">U.S. UAC care pipeline analysis with 5 custom KPIs, a Streamlit dashboard, and findings published on SSRN.</p>
+            <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">Pandas</span><span class="ptag">Streamlit</span><span class="ptag">SSRN</span></div>
+            <div class="proj-links">
+              <a class="pl-s" href="https://github.com/GokulM8/Care-Transition-CBP" target="_blank" rel="noopener noreferrer"><i class="ti ti-brand-github" aria-hidden="true"></i> Source</a>
+              <a class="pl-s" href="https://papers.ssrn.com/abstract=6811798" target="_blank" rel="noopener noreferrer"><i class="ti ti-file-text" aria-hidden="true"></i> Paper</a>
+              <a class="pl-p" href="https://care-transition-cbp-ov9vzm4nnkreiaowsz6guy.streamlit.app/" target="_blank" rel="noopener noreferrer">Preview →</a>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <div class="proj-type-row">
+              <span class="proj-type">Data Science</span>
+              <span class="proj-badge">Research</span>
+            </div>
+            <h3 class="proj-title">Buyer Segmentation</h3>
+            <p class="proj-desc">K-Means and hierarchical clustering to profile real estate investor types from Parcl market data. Published on SSRN.</p>
+            <div class="proj-tags"><span class="ptag">Scikit-learn</span><span class="ptag">K-Means</span><span class="ptag">Pandas</span><span class="ptag">SSRN</span></div>
+            <div class="proj-links">
+              <a class="pl-s" href="https://github.com/GokulM8/Buyer-Segmentation-and-Investment-Profiling" target="_blank" rel="noopener noreferrer"><i class="ti ti-brand-github" aria-hidden="true"></i> Source</a>
+              <a class="pl-s" href="https://papers.ssrn.com/abstract=6811798" target="_blank" rel="noopener noreferrer"><i class="ti ti-file-text" aria-hidden="true"></i> Paper</a>
+              <a class="pl-p" href="https://github.com/GokulM8/Buyer-Segmentation-and-Investment-Profiling" target="_blank" rel="noopener noreferrer">Preview →</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="sec" id="contact">
+        <div class="sec-head">
+          <p class="sec-eyebrow">Get In Touch</p>
+          <h2 class="sec-title">Contact</h2>
+        </div>
+
+        <div class="contact-inner">
+          <p class="contact-copy">Open to internships, collaborations, and MS program conversations. Drop a message anytime.</p>
+          <a class="contact-mail" href="mailto:gokulmallabathula@gmail.com">
+            <div class="contact-mail-icon"><i class="ti ti-mail" aria-hidden="true"></i></div>
+            <div class="contact-mail-text">
+              <div class="contact-mail-lbl">EMAIL</div>
+              <div class="contact-mail-val">gokulmallabathula@gmail.com</div>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-copy">© 2026 Gokul Mallabathula</div>
+      <div class="footer-links">
+        <a class="footer-link" href="https://www.github.com/GokulM8" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="footer-link" href="https://www.linkedin.com/in/gokul-mallabathula-693a74118/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="footer-link" href="https://www.safepulse.in/" target="_blank" rel="noopener noreferrer">SafePulse</a>
       </div>
-
-      <ul class="experience-points">
-        <li><strong>Care Transition CBP:</strong> Developed a care transition prediction system to analyze patient handoff patterns and flag high-risk transitions using clinical data and ML classification models.</li>
-        <li><strong>Machine Learning Segment Buyer:</strong> Built a customer segmentation pipeline using clustering algorithms to identify distinct buyer personas, enabling targeted marketing and purchase behavior analysis.</li>
-      </ul>
-
-      <div class="tech-tags">
-        <span>Python</span>
-        <span>Machine Learning</span>
-        <span>Scikit-learn</span>
-        <span>Pandas</span>
-        <span>NumPy</span>
-        <span>Clustering Algorithms</span>
-        <span>Healthcare Data</span>
-        <span>Customer Segmentation</span>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-<!-- My Mission Section -->
-<section class="mission-section">
-  <div class="mission-content">
-    <span class="mission-label">MY MISSION</span>
-
-    <h2>
-      Full-Stack Vision,<br />
-      Data-Driven Execution
-    </h2>
-
-    <p>
-      I am a software engineer driven by curiosity and impact. My work focuses on
-      building scalable digital products that combine clean user experiences with
-      intelligent data-driven systems.
-    </p>
-
-    <p>
-      I specialize in modern full-stack development, blending intuitive UI design
-      with powerful backend logic and analytics to create meaningful digital solutions.
-    </p>
-
-    <div class="mission-stats">
-      <div class="stat">
-        <h3>1+</h3>
-        <span>Years Experience</span>
-      </div>
-      <div class="stat">
-        <h3>5+</h3>
-        <span>Projects Built</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Expertise Section -->
-<section id="skills" class="expertise-section">
-  <div class="expertise-header">
-    <span class="section-tag">TECHNICAL ARSENAL</span>
-    <h2>Expertise for Modern Challenges</h2>
-    <p>
-      A broad technical foundation combined with deep specialization in modern
-      development and data-driven systems.
-    </p>
-  </div>
-
-  <div class="expertise-grid">
-
-    <div class="expertise-card">
-      <h3>Frontend Engineering</h3>
-      <div class="tags">
-        <span>React</span>
-        <span>TypeScript</span>
-        <span>Next.js</span>
-        <span>Tailwind</span>
-      </div>
-    </div>
-
-    <div class="expertise-card">
-      <h3>Backend & Cloud</h3>
-      <div class="tags">
-        <span>Node.js</span>
-        <span>Python</span>
-        <span>SQLite3</span>
-        <span>Flask</span>
-        <span>Docker</span>
-      </div>
-    </div>
-
-    <div class="expertise-card">
-      <h3>Data Science & AI</h3>
-      <div class="tags">
-        <span>Python</span>
-        <span>Pandas</span>
-        <span>Scikit-learn</span>
-        <span>TensorFlow</span>
-        <span>LLMs</span>
-        <span>ONNX</span>
-        <span>XGBoost</span>
-      </div>
-    </div>
-
-    <div class="expertise-card">
-      <h3>Engineering Practices</h3>
-      <div class="tags">
-        <span>Git</span>
-        <span>Testing</span>
-        <span>CI/CD</span>
-        <span>System Design</span>
-        <span>Agile</span>
-        <span>Supabase</span>
-        <span>Vercel</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- Projects Section -->
-<section id="projects" class="projects-section">
-  <div class="projects-header">
-    <span class="section-label">SELECTION OF WORK</span>
-    <h2>Featured Projects</h2>
-    <p>
-      Real-world applications combining software engineering, data science,
-      and intelligent systems.
-    </p>
-  </div>
-
-  <div class="projects-grid">
-
-    <!-- Project 1 -->
-    <div class="project-card fullstack">
-      <div class="project-icon">
-        <i class="bx bx-layer"></i>
-      </div>
-      <h4 class="project-tag">FULL STACK</h4>
-      <h3>Smart Park</h3>
-      <p>
-        A complete web-based system to manage vehicle entry, exit, and parking slot allocation with an admin dashboard.
-      </p>
-
-      <div class="tech-tags">
-        <span>React</span>
-        <span>Vite</span>
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>TypeScript</span>
-        <span>Supabase</span>
-        <span>vercel</span>
-      </div>
-
-      <div class="project-actions">
-        <a href="https://github.com/GokulM8/smart-park" 
-        class="source" 
-        target="_blank"
-        rel="noopener noreferrer">
-          <i class="bx bxl-github"></i>
-          Source
-        </a>
-        <a href="https://smart-park-green-eight.vercel.app" class="primary" target="_blank" rel="noopener noreferrer">Preview</a>
-      </div>
-    </div>
-
-    <!-- Project 2 -->
-    <div class="project-card frontend">
-      <div class="project-icon">
-        <i class="bx bx-code-alt"></i>
-      </div>
-      <h4 class="project-tag">FRONTEND</h4>
-      <h3>Personal Portfolio Website</h3>
-      <p>
-        A responsive and modern personal portfolio showcasing projects, 
-        skills, and experience with clean UI and smooth navigation.
-      </p>
-
-      <div class="tech-tags">
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>JavaScript</span>
-        <span>Flask</span>
-      </div>
-
-      <div class="project-actions">
-        <a href="https://github.com/GokulM8/portfolio" 
-        class="source" 
-        target="_blank"
-        rel="noopener noreferrer">
-          <i class="bx bxl-github"></i>
-          Source
-        </a>
-        <a href="https://github.com/GokulM8/portfolio" class="primary" target="_blank" rel="noopener noreferrer">Preview</a>
-      </div>
-    </div>
-
-    <!-- Project 3 -->
-    <div class="project-card data">
-      <div class="project-icon">
-        <i class="bx bx-bar-chart-alt-2"></i>
-      </div>
-      <h4 class="project-tag">MACHINE LEARNING</h4>
-      <h3>Safe Pulse</h3>
-      <p>
-        Designed machine learning models for prediction, analysis,
-        and visualization of cardiovascular disease.
-      </p>
-
-      <div class="tech-tags">
-        <span>Python</span>
-        <span>XGBoost</span>
-        <span>Machine Learning</span>
-        <span>ONNX</span>
-      </div>
-
-      <div class="project-actions">
-        <a href="https://github.com/GokulM8" class="source"
-        target="_blank"
-        rel="noopener noreferrer">
-          <i class="bx bxl-github"></i>
-          Source
-        </a>
-        <a href="https://www.safepulse.in/" class="primary" target="_blank" rel="noopener noreferrer">Preview</a>
-      </div>
-    </div>
-
+    </footer>
   </div>
 
-  <!-- Project 4 -->
-    <div class="project-card data">
-      <div class="project-icon">
-        <i class="bx bx-bar-chart-alt-2"></i>
-      </div>
-      <h4 class="project-tag">DATA SCIENCE</h4>
-      <h3>Care Transition Efficiency & Placement Outcome Analytics </h3>
-      <p>
-        Analyzed the U.S. UAC care pipeline (CBP → HHS/ORR → sponsor placement) using 2023–2025 operational data, engineering 5 custom KPIs, building a Streamlit dashboard, and publishing findings on SSRN.
-      </p>
-
-      <div class="tech-tags">
-        <span>Python</span>
-        <span>Pandas</span>
-        <span>Matplotlib</span>
-        <span>Streamlit</span>
-        <span>VS Code</span>
-        <span>SSRN</span>
-      </div>
-
-      <div class="project-actions">
-        <a href="https://github.com/GokulM8/Care-Transition-CBP" class="source"
-        target="_blank"
-        rel="noopener noreferrer">
-          <i class="bx bxl-github"></i>
-          Source
-        </a>
-        <a href="https://papers.ssrn.com/abstract=6811798" class="source" target="_blank" rel="noopener noreferrer">
-    <i class="bx bxs-file-doc"></i>
-    Research Paper
-  </a>
-        <a href="https://care-transition-cbp-ov9vzm4nnkreiaowsz6guy.streamlit.app/" class="primary" target="_blank" rel="noopener noreferrer">Preview</a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Project 5 -->
-<div class="project-card data">
-  <div class="project-icon">
-    <i class="bx bx-building-house"></i>
-  </div>
-  <h4 class="project-tag">DATA SCIENCE</h4>
-  <h3>Real Estate Buyer Segmentation & Investment Profiling</h3>
-  <p>
-    Segmented real estate buyers into four profiles — Global Investors, First-Time Buyers, Corporate Buyers, and Luxury Investors — using K-Means and Hierarchical Clustering on Parcl's market intelligence data, with findings delivered via a Streamlit dashboard and SSRN research paper.
-  </p>
-
-  <div class="tech-tags">
-    <span>Python</span>
-    <span>Scikit-learn</span>
-    <span>Pandas</span>
-    <span>Streamlit</span>
-    <span>VS Code</span>
-    <span>SSRN</span>
-  </div>
-
-  <div class="project-actions">
-    <a href="https://github.com/GokulM8/Buyer-Segmentation-and-Investment-Profiling" class="source"
-    target="_blank"
-    rel="noopener noreferrer">
-      <i class="bx bxl-github"></i>
-      Source
-    </a>
-    <a href="#" class="source" target="_blank" rel="noopener noreferrer">
-      <i class="bx bxs-file-doc"></i>
-      Research Paper
-    </a>
-    <a href="#" class="primary" target="_blank" rel="noopener noreferrer">Preview</a>
-  </div>
-</div>
-</section>
-
-<section id="email" class="contact-email">
-  <div class="contact-header">
-    <p class="contact-label">CONTACT DETAILS</p>
-  </div>
-
-  <a href="mailto:gokulmallabathula@gmail.com"
-     class="email-box"
-     aria-label="Send Email">
-
-    <div class="email-icon">
-      <i class="bx bx-envelope"></i>
-    </div>
-
-    <div class="email-text">
-      <span class="label">EMAIL</span>
-      <span class="value">gokulmallabathula@gmail.com</span>
-    </div>
-
-  </a>
-</section>
-
-<!-- Lucide Icons -->
-<script src="https://unpkg.com/lucide@latest"></script>
-<script src="{{ url_for('static', filename='js/main.js') }}"></script>
-
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
