@@ -1153,3 +1153,7 @@ a:active {
 .email-box {
   margin-bottom: 40px;
 }
+
+.experience-grid {
+  gap: 2rem; /* or however much spacing fits your design */
+}
