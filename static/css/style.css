@@ -462,6 +462,25 @@ a {
   text-align: center;
 }
 
+.about-quote {
+  max-width: 600px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.about-quote-text {
+  color: #6ee7b7;
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.about-quote-author {
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.28);
+  font-size: 11px;
+}
+
 .about-body strong {
   color: rgba(255, 255, 255, 0.72);
   font-weight: 600;
@@ -530,6 +549,66 @@ a {
   background: rgba(10, 10, 10, 0.8);
 }
 
+.hack-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.hack-card {
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid var(--line-strong);
+  background: var(--bg-card);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.hack-card:hover {
+  border-color: #1d9e75;
+  transform: translateY(-2px);
+}
+
+.hack-icon {
+  font-size: 20px;
+}
+
+.hack-name {
+  margin-top: 10px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.hack-outcome {
+  margin-top: 4px;
+  color: #1d9e75;
+  font-size: 11px;
+}
+
+.hack-team {
+  margin-top: 2px;
+  color: rgba(255, 255, 255, 0.32);
+  font-size: 11px;
+}
+
+.hack-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.hack-role-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 10px;
+}
+
 .skills-grid,
 .proj-grid {
   display: grid;
@@ -559,7 +638,11 @@ a {
 .exp-pts {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 10px;
+}
+
+.proj-tags {
+  margin-bottom: 16px;
 }
 
 .sk-tag,
@@ -568,12 +651,13 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 10px;
-  border-radius: 6px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.03);
-  color: rgba(255, 255, 255, 0.42);
+  padding: 6px 13px;
+  border-radius: 8px;
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.5);
   font-size: 11px;
+  letter-spacing: 0.01em;
 }
 
 .exp-list {
@@ -695,6 +779,14 @@ a {
   color: rgba(255, 255, 255, 0.32);
   font-size: 12px;
   line-height: 1.75;
+}
+
+.proj-award {
+  margin-top: -6px;
+  margin-bottom: 16px;
+  color: #facc15;
+  font-size: 11px;
+  font-weight: 600;
 }
 
 .proj-links {
@@ -835,7 +927,8 @@ a {
     grid-template-columns: 1fr 220px;
   }
 
-  .skills-grid {
+  .skills-grid,
+  .hack-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -871,17 +964,37 @@ a {
   }
 
   .nav-links {
+    display: none;
     grid-area: links;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 6px;
+    border-radius: 20px;
+    padding: 10px;
+    margin-top: 4px;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nl {
     width: 100%;
     justify-content: flex-start;
-    overflow-x: auto;
-    padding: 8px;
+    padding: 11px 12px;
+    border-radius: 14px;
   }
 
   .nav-cta {
+    display: none;
     grid-area: cta;
     width: 100%;
-    margin-top: 2px;
+    margin-top: 6px;
+  }
+
+  .nav-links.open ~ .nav-cta {
+    display: flex;
   }
 
   .section-shell {
@@ -892,13 +1005,33 @@ a {
   }
 
   .hero-right {
-    justify-self: start;
-    max-width: 210px;
+    justify-self: center;
+    width: 220px;
+    height: 260px;
+    margin: 0 auto;
+  }
+
+  .profile-avatar {
+    width: 190px;
+    height: 190px;
+  }
+
+  .avatar-card {
+    left: 27px;
+    bottom: 53px;
+  }
+
+  .avatar-card2 {
+    left: auto;
+    right: 27px;
+    top: 53px;
+    bottom: auto;
   }
 
   .approach-row,
   .stats-row,
-  .skills-grid {
+  .skills-grid,
+  .hack-grid {
     grid-template-columns: 1fr;
   }
 
@@ -946,28 +1079,28 @@ a {
     width: 100%;
   }
 
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 6px;
-    border-radius: 20px;
-    padding: 10px;
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .nl {
-    width: 100%;
-    justify-content: flex-start;
-    padding: 11px 12px;
-    border-radius: 14px;
-  }
-
   .hero-right {
-    max-width: 186px;
+    width: 190px;
+    height: 230px;
+  }
+
+  .profile-avatar {
+    width: 165px;
+    height: 165px;
+  }
+
+  .avatar-card {
+    left: 23px;
+    bottom: 48px;
+    padding: 7px 10px;
+  }
+
+  .avatar-card2 {
+    left: auto;
+    right: 23px;
+    top: 48px;
+    bottom: auto;
+    padding: 7px 10px;
   }
 
   .contact-mail {

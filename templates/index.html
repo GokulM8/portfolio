@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gokul Mallabathula | Portfolio</title>
 
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='assets/favicon.svg') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='assets/favicon-32.png') }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='assets/favicon-180.png') }}">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -28,6 +32,7 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
         <a class="nl" href="#about">About</a>
         <a class="nl" href="#experience">Experience</a>
         <a class="nl" href="#skills">Skills</a>
+        <a class="nl" href="#hackathons">Hackathons</a>
         <a class="nl" href="#projects">Projects</a>
         <a class="nl" href="#contact">Contact</a>
       </div>
@@ -50,7 +55,7 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
 
           <div class="hero-btns">
             <a class="hbtn-p" href="#contact">Hire Me</a>
-            <a class="hbtn-s" href="{{ url_for('static', filename='assets/Proforma.pdf') }}" target="_blank" rel="noopener noreferrer">Download CV</a>
+            <a class="hbtn-s" href="{{ url_for('static', filename='assets/Resume 1 .pdf') }}" target="_blank" rel="noopener noreferrer">Download CV</a>
           </div>
 
           <div class="hero-socials" aria-label="Social links">
@@ -92,6 +97,11 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
           I'm a software engineer and data science enthusiast driven by curiosity and impact. I build scalable digital products under <strong>Med2Predict</strong> while combining clean user experiences with intelligent ML systems for health-tech.
         </p>
 
+        <blockquote class="about-quote">
+          <p class="about-quote-text">"You build your character when you keep performing under pressure."</p>
+          <p class="about-quote-author">— Virat Kohli</p>
+        </blockquote>
+
         <div class="approach-row">
           <div class="ap-card"><span class="ap-num">01</span><span class="ap-txt">Understand the problem deeply</span></div>
           <div class="ap-card"><span class="ap-num">02</span><span class="ap-txt">Build data-driven solutions</span></div>
@@ -117,14 +127,14 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
             <div class="exp-dot-col"><div class="exp-dot cur"></div><div class="exp-line"></div></div>
             <div>
               <div class="exp-role">Machine Learning Engineer Intern</div>
-              <div class="exp-co">Unified Mentor Pvt. Ltd.</div>
+              <div class="exp-co">FlyRank AI</div>
               <div class="exp-pts">
-                <span class="exp-pt">Care Transition CBP</span>
-                <span class="exp-pt">ML Segment Buyer</span>
-                <span class="exp-pt">Python</span><span class="exp-pt">Scikit-learn</span>
+                <span class="exp-pt">Search Optimization</span>
+                <span class="exp-pt">NLP & Ranking</span>
+                <span class="exp-pt">Applied ML Analytics</span>
               </div>
             </div>
-            <div class="exp-date">Mar – Jun 2026</div>
+            <div class="exp-date">Jul – Aug 2026</div>
           </article>
 
           <article class="exp-item">
@@ -180,6 +190,59 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
         </div>
       </section>
 
+      <section class="sec" id="hackathons">
+        <div class="sec-head">
+          <p class="sec-eyebrow">Achievements</p>
+          <h2 class="sec-title">Hackathons</h2>
+        </div>
+
+        <div class="hack-grid">
+          <article class="hack-card">
+            <span class="hack-icon">🏆</span>
+            <p class="hack-name">USAII Global AI Hackathon 2026</p>
+            <p class="hack-level">International Level</p>
+            <p class="hack-outcome">Final Round Qualifier — Results Awaited</p>
+            <p class="hack-team">Team ByteCoders</p>
+            <div class="hack-roles">
+              <span class="hack-role-tag">Team Lead</span>
+              <span class="hack-role-tag">Frontend</span>
+              <span class="hack-role-tag">Backend</span>
+              <span class="hack-role-tag">API Designer</span>
+              <span class="hack-role-tag">Supabase / DB</span>
+              <span class="hack-role-tag">AI / Gemini Integration</span>
+              <span class="hack-role-tag">UI/UX Design</span>
+            </div>
+          </article>
+
+          <article class="hack-card">
+            <span class="hack-icon">✅</span>
+            <p class="hack-name">Smart India Hackathon - SIH 2025</p>
+            <p class="hack-level">National Level</p>
+            <p class="hack-outcome">Round 2 Qualifier</p>
+            <p class="hack-team">Team Shark</p>
+            <div class="hack-roles">
+              <span class="hack-role-tag">Backend Designer</span>
+              <span class="hack-role-tag">Supabase / DB</span>
+            </div>
+          </article>
+
+          <article class="hack-card">
+            <span class="hack-icon">⚡</span>
+            <p class="hack-name">Radiothon Winter 2026</p>
+            <p class="hack-level">College Level</p>
+            <p class="hack-outcome">Participant</p>
+            <p class="hack-team">Team Doom</p>
+            <div class="hack-roles">
+              <span class="hack-role-tag">Team Lead</span>
+              <span class="hack-role-tag">ML Engineer</span>
+              <span class="hack-role-tag">AI / ML Integration</span>
+              <span class="hack-role-tag">Supabase / DB</span>
+              <span class="hack-role-tag">API Designer</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <section class="skills-sec" id="projects">
         <div class="sec-head">
           <p class="sec-eyebrow">Selection of Work</p>
@@ -198,6 +261,21 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
             <div class="proj-links">
               <a class="pl-s" href="https://github.com/GokulM8" target="_blank" rel="noopener noreferrer"><i class="ti ti-brand-github" aria-hidden="true"></i> Source</a>
               <a class="pl-p" href="https://www.safepulse.in/" target="_blank" rel="noopener noreferrer">Preview →</a>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <div class="proj-type-row">
+              <span class="proj-type">AI / Full Stack</span>
+              <span class="proj-badge live">● Live</span>
+            </div>
+            <h3 class="proj-title">RuralLink AI</h3>
+            <p class="proj-desc">Multilingual rural assistant connecting underserved communities to government schemes, nearby facilities, and voice-based support in 8 Indic languages. Built for USAII Global AI Hackathon 2026.</p>
+            <p class="proj-award">🏆 USAII Global AI Hackathon 2026 — Final Round Qualifier, Results Awaited</p>
+            <div class="proj-tags"><span class="ptag">Next.js</span><span class="ptag">Gemini 1.5 Flash</span><span class="ptag">Supabase</span><span class="ptag">Mapbox</span><span class="ptag">Overpass API</span></div>
+            <div class="proj-links">
+              <a class="pl-s" href="https://github.com/GokulM8/rural-link-ai" target="_blank" rel="noopener noreferrer"><i class="ti ti-brand-github" aria-hidden="true"></i> Source</a>
+              <a class="pl-p" href="https://rural-link-ai.vercel.app/" target="_blank" rel="noopener noreferrer">Preview →</a>
             </div>
           </article>
 
