@@ -609,6 +609,22 @@ a {
   font-size: 10px;
 }
 
+.hack-cert-btn {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 5px 13px;
+  border-radius: 6px;
+  border: 1px solid #facc15;
+  color: #facc15;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.18s;
+}
+.hack-cert-btn:hover {
+  background: rgba(250, 204, 21, 0.1);
+}
+
 .skills-grid,
 .proj-grid {
   display: grid;
