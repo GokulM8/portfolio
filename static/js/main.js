@@ -158,4 +158,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
     skillCards.forEach((card) => skillObserver.observe(card));
   }
+
+  // Entrance animations — sections fade + slide up on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  if (revealEls.length) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.07 });
+    revealEls.forEach((el) => revealObserver.observe(el));
+  }
+
+  // Animated number counters for About stats
+  const statsRow = document.querySelector('.stats-row');
+  if (statsRow) {
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.stat-num[data-count]').forEach((el) => {
+            const target = parseInt(el.dataset.count, 10);
+            const suffix = el.dataset.suffix ?? '';
+            let current = 0;
+            const duration = 900;
+            const start = performance.now();
+            const animate = (now) => {
+              const elapsed = now - start;
+              const progress = Math.min(elapsed / duration, 1);
+              current = Math.round(progress * target);
+              el.textContent = current + suffix;
+              if (progress < 1) requestAnimationFrame(animate);
+            };
+            requestAnimationFrame(animate);
+          });
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counterObserver.observe(statsRow);
+  }
+
+  // Back to top button
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
 });

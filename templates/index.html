@@ -88,7 +88,7 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
 
       <hr class="divider">
 
-      <section class="sec" id="about">
+      <section class="sec reveal" id="about">
         <div class="sec-head">
           <p class="sec-eyebrow">About Me</p>
           <h2 class="sec-title">Who I Am</h2>
@@ -110,14 +110,14 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
         </div>
 
         <div class="stats-row">
-          <div class="stat-item"><div class="stat-num">1+</div><div class="stat-lbl">Years Experience</div></div>
-          <div class="stat-item"><div class="stat-num">5+</div><div class="stat-lbl">Projects Built</div></div>
-          <div class="stat-item"><div class="stat-num">2</div><div class="stat-lbl">Research Papers</div></div>
-          <div class="stat-item"><div class="stat-num">2</div><div class="stat-lbl">Internships</div></div>
+          <div class="stat-item"><div class="stat-num" data-count="1" data-suffix="+">1+</div><div class="stat-lbl">Years Experience</div></div>
+          <div class="stat-item"><div class="stat-num" data-count="5" data-suffix="+">5+</div><div class="stat-lbl">Projects Built</div></div>
+          <div class="stat-item"><div class="stat-num" data-count="2" data-suffix="">2</div><div class="stat-lbl">Research Papers</div></div>
+          <div class="stat-item"><div class="stat-num" data-count="2" data-suffix="">2</div><div class="stat-lbl">Internships</div></div>
         </div>
       </section>
 
-      <section class="sec" id="experience">
+      <section class="sec reveal" id="experience">
         <div class="sec-head">
           <p class="sec-eyebrow">Professional Journey</p>
           <h2 class="sec-title">Experience</h2>
@@ -162,7 +162,7 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
         </div>
       </section>
 
-      <section class="skills-sec" id="skills">
+      <section class="skills-sec reveal" id="skills">
         <div class="sec-head">
           <p class="sec-eyebrow">Technical Arsenal</p>
           <h2 class="sec-title">Skills</h2>
@@ -217,7 +217,7 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
         </div>
       </section>
 
-      <section class="sec" id="hackathons">
+      <section class="sec reveal" id="hackathons">
         <div class="sec-head">
           <p class="sec-eyebrow">Achievements</p>
           <h2 class="sec-title">Hackathons</h2>
@@ -225,7 +225,7 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
 
         <div class="hack-grid">
           <article class="hack-card">
-            <span class="hack-icon">🏆</span>
+            <div class="hack-icon hack-icon--gold"><i class="ti ti-trophy"></i></div>
             <p class="hack-name">USAII Global AI Hackathon 2026</p>
             <p class="hack-level">International Level</p>
             <p class="hack-outcome">Final Round Qualifier — Finalist</p>
@@ -245,7 +245,7 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
           </article>
 
           <article class="hack-card">
-            <span class="hack-icon">✅</span>
+            <div class="hack-icon hack-icon--blue"><i class="ti ti-shield-check"></i></div>
             <p class="hack-name">Smart India Hackathon - SIH 2025</p>
             <p class="hack-level">National Level</p>
             <p class="hack-outcome">Round 2 Qualifier</p>
@@ -257,7 +257,7 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
           </article>
 
           <article class="hack-card">
-            <span class="hack-icon">⚡</span>
+            <div class="hack-icon hack-icon--violet"><i class="ti ti-radio"></i></div>
             <p class="hack-name">Radiothon Winter 2026</p>
             <p class="hack-level">College Level</p>
             <p class="hack-outcome">Participant</p>
@@ -273,7 +273,7 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
         </div>
       </section>
 
-      <section class="skills-sec" id="projects">
+      <section class="skills-sec reveal" id="projects">
         <div class="sec-head">
           <p class="sec-eyebrow">Selection of Work</p>
           <h2 class="sec-title">Featured Projects</h2>
@@ -355,7 +355,7 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
         </div>
       </section>
 
-      <section class="sec" id="contact">
+      <section class="sec reveal" id="contact">
         <div class="sec-head">
           <p class="sec-eyebrow">Get In Touch</p>
           <h2 class="sec-title">Contact</h2>
@@ -405,6 +405,7 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
     </footer>
   </div>
 
+  <button id="backToTop" class="back-to-top" aria-label="Back to top"><i class="ti ti-arrow-up"></i></button>
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
