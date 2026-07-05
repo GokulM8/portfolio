@@ -17,6 +17,7 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+  <div id="scrollProgress" role="progressbar" aria-hidden="true"></div>
   <div class="pr">
     <nav class="nav" id="top">
       <a class="nav-logo" href="#home" aria-label="Go to home">G</a>
@@ -43,9 +44,9 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
     <main>
       <section class="hero section-shell" id="home">
         <div class="hero-left">
-          <div class="hero-avail"><span class="avail-dot"></span> Available for opportunities</div>
+          <div class="hero-avail"><span class="avail-dot"></span> Open to Internships <span class="avail-sep">·</span> Starting Aug 2026</div>
           <p class="hero-greeting">Hello,  I'm <span class="highlight-name">Gokul Mallabathula</span></p>
-          <h1 class="hero-name">Software Developer<br><em>& ML Engineer</em></h1>
+          <h1 class="hero-name"><span id="typedText"></span><span class="typed-cursor" aria-hidden="true">|</span></h1>
           <p class="hero-role">Building <strong>intelligent health-tech systems</strong> with a data-first mindset. CS student at VIT-AP, India.</p>
 
           <div class="hero-meta">
@@ -122,33 +123,41 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
           <h2 class="sec-title">Experience</h2>
         </div>
 
-        <div class="exp-list">
+        <div class="exp-timeline">
           <article class="exp-item">
-            <div class="exp-dot-col"><div class="exp-dot cur"></div><div class="exp-line"></div></div>
-            <div>
-              <div class="exp-role">Machine Learning Engineer Intern</div>
-              <div class="exp-co">FlyRank AI</div>
+            <div class="exp-dot cur"></div>
+            <div class="exp-body">
+              <div class="exp-header">
+                <div class="exp-header-left">
+                  <div class="exp-role">Machine Learning Engineer Intern <span class="exp-now-badge">Current</span></div>
+                  <div class="exp-co">FlyRank AI</div>
+                </div>
+                <span class="exp-date">Jul – Aug 2026</span>
+              </div>
               <div class="exp-pts">
                 <span class="exp-pt">Search Optimization</span>
                 <span class="exp-pt">NLP & Ranking</span>
                 <span class="exp-pt">Applied ML Analytics</span>
               </div>
             </div>
-            <div class="exp-date">Jul – Aug 2026</div>
           </article>
 
           <article class="exp-item">
-            <div class="exp-dot-col"><div class="exp-dot"></div></div>
-            <div>
-              <div class="exp-role">Fraud Detection Engineer Intern</div>
-              <div class="exp-co">Zetheta Algorithms Pvt. Ltd.</div>
+            <div class="exp-dot"></div>
+            <div class="exp-body">
+              <div class="exp-header">
+                <div class="exp-header-left">
+                  <div class="exp-role">Fraud Detection Engineer Intern</div>
+                  <div class="exp-co">Zetheta Algorithms Pvt. Ltd.</div>
+                </div>
+                <span class="exp-date">Jan – Mar 2026</span>
+              </div>
               <div class="exp-pts">
                 <span class="exp-pt">Anomaly Detection</span>
                 <span class="exp-pt">Blockchain Analysis</span>
                 <span class="exp-pt">Cybersecurity</span>
               </div>
             </div>
-            <div class="exp-date">Jan – Mar 2026</div>
           </article>
         </div>
       </section>
@@ -162,29 +171,47 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
         <div class="skills-grid">
           <article class="skill-card">
             <h3 class="skill-card-title">Frontend</h3>
-            <div class="skill-tags">
-              <span class="sk-tag">React</span><span class="sk-tag">Next.js</span><span class="sk-tag">TypeScript</span><span class="sk-tag">HTML</span><span class="sk-tag">CSS</span><span class="sk-tag">Tailwind</span>
+            <div class="skill-bars">
+              <div class="skill-bar-item"><span class="skill-bar-name">React</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-name">Next.js</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-name">TypeScript</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="72"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-name">HTML</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-name">CSS</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-name">Tailwind</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div></div>
             </div>
           </article>
 
           <article class="skill-card">
             <h3 class="skill-card-title">Backend & Cloud</h3>
-            <div class="skill-tags">
-              <span class="sk-tag">Python</span><span class="sk-tag">Flask</span><span class="sk-tag">Node.js</span><span class="sk-tag">Supabase</span><span class="sk-tag">Vercel</span>
+            <div class="skill-bars">
+              <div class="skill-bar-item"><span class="skill-bar-name">Python</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-name">Flask</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-name">Node.js</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-name">Supabase</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="78"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-name">Vercel</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div></div>
             </div>
           </article>
 
           <article class="skill-card">
             <h3 class="skill-card-title">Data Science & AI</h3>
-            <div class="skill-tags">
-              <span class="sk-tag">Scikit-learn</span><span class="sk-tag">XGBoost</span><span class="sk-tag">Pandas</span><span class="sk-tag">TensorFlow</span><span class="sk-tag">ONNX</span><span class="sk-tag">SHAP</span>
+            <div class="skill-bars">
+              <div class="skill-bar-item"><span class="skill-bar-name">Pandas</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-name">Scikit-learn</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-name">XGBoost</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-name">TensorFlow</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="65"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-name">SHAP</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="65"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-name">ONNX</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="60"></div></div></div>
             </div>
           </article>
 
           <article class="skill-card">
             <h3 class="skill-card-title">Tools & Practices</h3>
-            <div class="skill-tags">
-              <span class="sk-tag">Git</span><span class="sk-tag">CI/CD</span><span class="sk-tag">Streamlit</span><span class="sk-tag">Docker</span><span class="sk-tag">Agile</span>
+            <div class="skill-bars">
+              <div class="skill-bar-item"><span class="skill-bar-name">Git</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-name">Streamlit</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="78"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-name">Agile</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="72"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-name">CI/CD</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-name">Docker</span><div class="skill-bar-track"><div class="skill-bar-fill" data-width="62"></div></div></div>
             </div>
           </article>
         </div>
@@ -254,6 +281,10 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
 
         <div class="proj-grid">
           <article class="proj-card featured">
+            <div class="proj-preview" style="--pa:#b91c1c;--pb:#450a0a;">
+              <div class="proj-preview-bar"><span class="ppb-dot r"></span><span class="ppb-dot y"></span><span class="ppb-dot g"></span><span class="ppb-url">safepulse.in</span></div>
+              <div class="proj-preview-body"><p class="proj-preview-title">Safe Pulse</p><a class="proj-preview-cta" href="https://www.safepulse.in/" target="_blank" rel="noopener">Open →</a></div>
+            </div>
             <div class="proj-type-row">
               <span class="proj-type">Machine Learning</span>
               <span class="proj-badge live">● Live</span>
@@ -268,6 +299,10 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
           </article>
 
           <article class="proj-card">
+            <div class="proj-preview" style="--pa:#065f46;--pb:#022c22;">
+              <div class="proj-preview-bar"><span class="ppb-dot r"></span><span class="ppb-dot y"></span><span class="ppb-dot g"></span><span class="ppb-url">rural-link-ai.vercel.app</span></div>
+              <div class="proj-preview-body"><p class="proj-preview-title">RuralLink AI</p><a class="proj-preview-cta" href="https://rural-link-ai.vercel.app/" target="_blank" rel="noopener">Open →</a></div>
+            </div>
             <div class="proj-type-row">
               <span class="proj-type">AI / Full Stack</span>
               <span class="proj-badge live">● Live</span>
@@ -283,6 +318,10 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
           </article>
 
           <article class="proj-card">
+            <div class="proj-preview" style="--pa:#1d4ed8;--pb:#1e3a8a;">
+              <div class="proj-preview-bar"><span class="ppb-dot r"></span><span class="ppb-dot y"></span><span class="ppb-dot g"></span><span class="ppb-url">smart-park-green-eight.vercel.app</span></div>
+              <div class="proj-preview-body"><p class="proj-preview-title">Smart Park</p><a class="proj-preview-cta" href="https://smart-park-green-eight.vercel.app" target="_blank" rel="noopener">Open →</a></div>
+            </div>
             <div class="proj-type-row">
               <span class="proj-type">Full Stack</span>
               <span class="proj-badge live">● Live</span>
@@ -297,6 +336,10 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
           </article>
 
           <article class="proj-card">
+            <div class="proj-preview" style="--pa:#6d28d9;--pb:#2e1065;">
+              <div class="proj-preview-bar"><span class="ppb-dot r"></span><span class="ppb-dot y"></span><span class="ppb-dot g"></span><span class="ppb-url">streamlit.app</span></div>
+              <div class="proj-preview-body"><p class="proj-preview-title">Care Transition Analytics</p><a class="proj-preview-cta" href="https://care-transition-cbp-ov9vzm4nnkreiaowsz6guy.streamlit.app/" target="_blank" rel="noopener">Open →</a></div>
+            </div>
             <div class="proj-type-row">
               <span class="proj-type">Data Science</span>
               <span class="proj-badge">Research</span>
@@ -312,6 +355,10 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
           </article>
 
           <article class="proj-card">
+            <div class="proj-preview" style="--pa:#0e7490;--pb:#164e63;">
+              <div class="proj-preview-bar"><span class="ppb-dot r"></span><span class="ppb-dot y"></span><span class="ppb-dot g"></span><span class="ppb-url">github.com/GokulM8</span></div>
+              <div class="proj-preview-body"><p class="proj-preview-title">Buyer Segmentation</p><a class="proj-preview-cta" href="https://github.com/GokulM8/Buyer-Segmentation-and-Investment-Profiling" target="_blank" rel="noopener">Open →</a></div>
+            </div>
             <div class="proj-type-row">
               <span class="proj-type">Data Science</span>
               <span class="proj-badge">Research</span>
@@ -336,6 +383,27 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
 
         <div class="contact-inner">
           <p class="contact-copy">Open to internships, collaborations, and MS program conversations. Drop a message anytime.</p>
+
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="cf-row">
+              <div class="cf-field">
+                <label class="cf-label" for="cf-name">Name</label>
+                <input class="cf-input" id="cf-name" type="text" placeholder="Your name" required>
+              </div>
+              <div class="cf-field">
+                <label class="cf-label" for="cf-email">Email</label>
+                <input class="cf-input" id="cf-email" type="email" placeholder="your@email.com" required>
+              </div>
+            </div>
+            <div class="cf-field">
+              <label class="cf-label" for="cf-msg">Message</label>
+              <textarea class="cf-textarea" id="cf-msg" rows="4" placeholder="What's on your mind?" required></textarea>
+            </div>
+            <button class="cf-submit" type="submit">Send Message →</button>
+          </form>
+
+          <div class="cf-divider">or reach me directly</div>
+
           <a class="contact-mail" href="mailto:gokulmallabathula@gmail.com">
             <div class="contact-mail-icon"><i class="ti ti-mail" aria-hidden="true"></i></div>
             <div class="contact-mail-text">
