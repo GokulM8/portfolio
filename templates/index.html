@@ -223,13 +223,15 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
           <h2 class="sec-title">Hackathons</h2>
         </div>
 
-        <div class="hack-grid">
-          <article class="hack-card">
-            <div class="hack-icon hack-icon--gold"><i class="ti ti-trophy"></i></div>
-            <p class="hack-name">USAII Global AI Hackathon 2026</p>
-            <p class="hack-level">International Level</p>
-            <p class="hack-outcome">Final Round Qualifier — Finalist</p>
-            <p class="hack-team">Team ByteCoders</p>
+        <article class="hack-card hack-card--featured">
+          <div class="hack-icon hack-icon--gold"><i class="ti ti-trophy"></i></div>
+          <div class="hack-body">
+            <p class="hack-eyebrow">Top Result</p>
+            <div class="hack-top-row">
+              <p class="hack-name">USAII Global AI Hackathon 2026</p>
+              <span class="hack-status hack-status--finalist">Final Round Qualifier — Finalist</span>
+            </div>
+            <p class="hack-meta">International Level <span class="hack-dot">·</span> Team ByteCoders</p>
             <div class="hack-roles">
               <span class="hack-role-tag">Team Lead</span>
               <span class="hack-role-tag">Frontend</span>
@@ -242,32 +244,74 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
             <a class="hack-cert-btn" href="{{ url_for('static', filename='assets/certificate-of-finalist.png') }}" target="_blank" rel="noopener">
               🎖️ View Certificate
             </a>
-          </article>
+          </div>
+        </article>
 
+        <div class="hack-grid">
           <article class="hack-card">
             <div class="hack-icon hack-icon--blue"><i class="ti ti-shield-check"></i></div>
-            <p class="hack-name">Smart India Hackathon - SIH 2025</p>
-            <p class="hack-level">National Level</p>
-            <p class="hack-outcome">Round 2 Qualifier</p>
-            <p class="hack-team">Team Shark</p>
-            <div class="hack-roles">
-              <span class="hack-role-tag">Backend Designer</span>
-              <span class="hack-role-tag">Supabase / DB</span>
+            <div class="hack-body">
+              <div class="hack-top-row">
+                <p class="hack-name">Smart India Hackathon - SIH 2025</p>
+                <span class="hack-status hack-status--qualifier">Round 2 Qualifier</span>
+              </div>
+              <p class="hack-meta">National Level <span class="hack-dot">·</span> Team Shark</p>
+              <div class="hack-roles">
+                <span class="hack-role-tag">Backend Designer</span>
+                <span class="hack-role-tag">Supabase / DB</span>
+              </div>
             </div>
           </article>
 
           <article class="hack-card">
             <div class="hack-icon hack-icon--violet"><i class="ti ti-radio"></i></div>
-            <p class="hack-name">Radiothon Winter 2026</p>
-            <p class="hack-level">College Level</p>
-            <p class="hack-outcome">Participant</p>
-            <p class="hack-team">Team Doom</p>
-            <div class="hack-roles">
-              <span class="hack-role-tag">Team Lead</span>
-              <span class="hack-role-tag">ML Engineer</span>
-              <span class="hack-role-tag">AI / ML Integration</span>
-              <span class="hack-role-tag">Supabase / DB</span>
-              <span class="hack-role-tag">API Designer</span>
+            <div class="hack-body">
+              <div class="hack-top-row">
+                <p class="hack-name">Radiothon Winter 2026</p>
+                <span class="hack-status hack-status--participant">Participant</span>
+              </div>
+              <p class="hack-meta">College Level <span class="hack-dot">·</span> Team Doom</p>
+              <div class="hack-roles">
+                <span class="hack-role-tag">Team Lead</span>
+                <span class="hack-role-tag">ML Engineer</span>
+                <span class="hack-role-tag">AI / ML Integration</span>
+                <span class="hack-role-tag">Supabase / DB</span>
+                <span class="hack-role-tag">API Designer</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="hack-card">
+            <div class="hack-icon hack-icon--teal"><i class="ti ti-shield-lock"></i></div>
+            <div class="hack-body">
+              <div class="hack-top-row">
+                <p class="hack-name">SEBI TechSprint 2026</p>
+                <span class="hack-status hack-status--ongoing">Ongoing</span>
+              </div>
+              <p class="hack-meta">National Level · Investor Protection Track <span class="hack-dot">·</span> Solo Submission</p>
+              <div class="hack-roles">
+                <span class="hack-role-tag">Full Stack</span>
+                <span class="hack-role-tag">ML Engineer</span>
+                <span class="hack-role-tag">XGBoost / SHAP</span>
+                <span class="hack-role-tag">UI/UX Design</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="hack-card">
+            <div class="hack-icon hack-icon--orange"><i class="ti ti-world-dollar"></i></div>
+            <div class="hack-body">
+              <div class="hack-top-row">
+                <p class="hack-name">Build with Gemini XPRIZE</p>
+                <span class="hack-status hack-status--ongoing">Ongoing</span>
+              </div>
+              <p class="hack-meta">International · Financial Access · $2M Prize Pool <span class="hack-dot">·</span> Team ByteCoder</p>
+              <div class="hack-roles">
+                <span class="hack-role-tag">Backend Architect</span>
+                <span class="hack-role-tag">Cloud Infrastructure</span>
+                <span class="hack-role-tag">Gemini AI Integration</span>
+                <span class="hack-role-tag">API Designer</span>
+              </div>
             </div>
           </article>
         </div>
@@ -279,21 +323,25 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
           <h2 class="sec-title">Featured Projects</h2>
         </div>
 
-        <div class="proj-grid">
-          <article class="proj-card featured">
+        <article class="proj-card proj-card--featured">
+          <div class="proj-feat-main">
             <div class="proj-type-row">
               <span class="proj-type">Machine Learning</span>
               <span class="proj-badge live">● Live</span>
             </div>
             <h3 class="proj-title">Safe Pulse</h3>
             <p class="proj-desc">Cardiovascular disease prediction using XGBoost + ONNX with SHAP explainability. Trained on UCI and Framingham datasets. Deployed under Med2Predict.</p>
+          </div>
+          <div class="proj-feat-side">
             <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">XGBoost</span><span class="ptag">ONNX</span><span class="ptag">SHAP</span></div>
             <div class="proj-links">
               <a class="pl-s" href="https://github.com/GokulM8" target="_blank" rel="noopener noreferrer"><i class="ti ti-brand-github" aria-hidden="true"></i> Source</a>
               <a class="pl-p" href="https://www.safepulse.in/" target="_blank" rel="noopener noreferrer">Preview →</a>
             </div>
-          </article>
+          </div>
+        </article>
 
+        <div class="proj-grid">
           <article class="proj-card">
             <div class="proj-type-row">
               <span class="proj-type">AI / Full Stack</span>
@@ -350,6 +398,34 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
               <a class="pl-s" href="https://github.com/GokulM8/Buyer-Segmentation-and-Investment-Profiling" target="_blank" rel="noopener noreferrer"><i class="ti ti-brand-github" aria-hidden="true"></i> Source</a>
               <a class="pl-s" href="https://papers.ssrn.com/abstract=6811798" target="_blank" rel="noopener noreferrer"><i class="ti ti-file-text" aria-hidden="true"></i> Paper</a>
               <a class="pl-p" href="https://github.com/GokulM8/Buyer-Segmentation-and-Investment-Profiling" target="_blank" rel="noopener noreferrer">Preview →</a>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <div class="proj-type-row">
+              <span class="proj-type">Fintech / Security</span>
+              <span class="proj-badge wip">◐ In Progress</span>
+            </div>
+            <h3 class="proj-title">ThreatLens</h3>
+            <p class="proj-desc">Phishing URL, synthetic media, and fake-communication detection platform built for SEBI TechSprint 2026 (Investor Protection track). 94.8% detection accuracy with SHAP explainability — because flagged threats need a "why".</p>
+            <p class="proj-award">🏛️ SEBI TechSprint 2026 — Track 1 · Investor Protection</p>
+            <div class="proj-tags"><span class="ptag">Next.js 14</span><span class="ptag">FastAPI</span><span class="ptag">XGBoost</span><span class="ptag">SHAP</span><span class="ptag">Supabase</span></div>
+            <div class="proj-links">
+              <a class="pl-s" href="https://github.com/GokulM8" target="_blank" rel="noopener noreferrer"><i class="ti ti-brand-github" aria-hidden="true"></i> Source</a>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <div class="proj-type-row">
+              <span class="proj-type">Fintech / AI</span>
+              <span class="proj-badge wip">◐ In Progress</span>
+            </div>
+            <h3 class="proj-title">NexRoute</h3>
+            <p class="proj-desc">Cross-border micro-remittance platform for the Kenya/M-Pesa corridor. Orchestration and compliance layer bridging crypto rails into local mobile money via Kotani Pay, with Gemini AI for smart routing. Built under team Codexa.</p>
+            <p class="proj-award">💰 Build with Gemini XPRIZE — Financial Access Track · $2M Prize Pool</p>
+            <div class="proj-tags"><span class="ptag">FastAPI</span><span class="ptag">Gemini API</span><span class="ptag">Firebase</span><span class="ptag">Cloud Run</span><span class="ptag">PostgreSQL</span></div>
+            <div class="proj-links">
+              <a class="pl-s" href="https://github.com/GokulM8" target="_blank" rel="noopener noreferrer"><i class="ti ti-brand-github" aria-hidden="true"></i> Source</a>
             </div>
           </article>
         </div>
