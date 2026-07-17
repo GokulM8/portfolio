@@ -19,26 +19,28 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
 <body>
   <div id="scrollProgress" role="progressbar" aria-hidden="true"></div>
   <div class="pr">
-    <nav class="nav" id="top">
-      <a class="nav-logo" href="#home" aria-label="Go to home">G</a>
-
-      <button class="nav-toggle" id="menuToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <div class="nav-links" id="navMenu">
-        <a class="nl active" href="#home">Home</a>
-        <a class="nl" href="#about">About</a>
-        <a class="nl" href="#experience">Experience</a>
-        <a class="nl" href="#skills">Skills</a>
-        <a class="nl" href="#hackathons">Hackathons</a>
-        <a class="nl" href="#projects">Projects</a>
-        <a class="nl" href="#contact">Contact</a>
+    <nav class="nav">
+      <div class="nav-left">
+        <span class="nav-email">gokulmallabathula@gmail.com</span>
+        <button class="nav-copy-btn" id="navCopyEmail" title="Copy email"><i class="ti ti-copy" aria-hidden="true"></i> Copy</button>
+        <a class="nav-cv-btn" href="{{ url_for('static', filename='assets/Gokul-Mallabathula-Resume.pdf') }}" target="_blank" rel="noopener noreferrer">CV</a>
       </div>
-
-      <a class="nav-cta" href="mailto:gokulmallabathula@gmail.com">Let's Talk</a>
+      <div class="nav-center">
+        <div class="section-nav-inner">
+          <a class="sn-link active" href="#home">Home</a>
+          <a class="sn-link" href="#about">About</a>
+          <a class="sn-link" href="#experience">Experience</a>
+          <a class="sn-link" href="#skills">Skills</a>
+          <a class="sn-link" href="#hackathons">Hackathons</a>
+          <a class="sn-link" href="#projects">Projects</a>
+          <a class="sn-link" href="#contact">Contact</a>
+        </div>
+      </div>
+      <div class="nav-right">
+        <a class="nav-social" href="https://www.linkedin.com/in/gokul-mallabathula-693a74118/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <span class="nav-sep">/</span>
+        <a class="nav-social" href="https://www.github.com/GokulM8" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
     </nav>
 
     <main>
@@ -55,13 +57,8 @@ href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.30.0/dist/tabler-icon
           </div>
 
           <div class="hero-btns">
-            <a class="hbtn-p" href="#contact">Hire Me</a>
-            <a class="hbtn-s" href="{{ url_for('static', filename='assets/Gokul-Mallabathula-Resume.pdf') }}" target="_blank" rel="noopener noreferrer">Download CV</a>
-          </div>
-
-          <div class="hero-socials" aria-label="Social links">
-            <a class="social-ic" href="https://www.github.com/GokulM8" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="ti ti-brand-github" aria-hidden="true"></i></a>
-            <a class="social-ic" href="https://www.linkedin.com/in/gokul-mallabathula-693a74118/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></a>
+            <a class="hbtn-p" href="#projects">View Projects →</a>
+            <a class="hbtn-s" href="#contact">Get In Touch</a>
           </div>
         </div>
 
