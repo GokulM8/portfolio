@@ -3,15 +3,15 @@
 import { ArrowUp, Check, Copy } from "lucide-react";
 import { useState } from "react";
 import { site } from "@/content/site";
+import { ResumeLink } from "./resume-viewer";
 import { RollText } from "./roll-text";
 import { sectionClass } from "./section-heading";
 
-function HoverLink({ href, label, download }: { href: string; label: string; download?: boolean }) {
+function HoverLink({ href, label }: { href: string; label: string }) {
   const external = href.startsWith("http");
   return (
     <a
       href={href}
-      download={download}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
       className="roll-hover text-xl font-medium tracking-[-0.03em] text-ink sm:text-2xl"
@@ -41,13 +41,13 @@ export function Contact() {
           as="h2"
           mode="view"
           text={site.contact.closing}
-          className="block text-[clamp(3rem,11vw,9.5rem)] leading-none font-semibold tracking-[-0.055em] text-ink"
+          className="block text-[clamp(3rem,11vw,9.5rem)] leading-none font-semibold tracking-[-0.04em] text-ink"
         />
         <p className="mt-8 max-w-md text-lg text-ink-soft">{site.contact.availability}</p>
 
         <div className="mt-12 flex flex-col gap-8 border-t border-line pt-8 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-sm text-ink-faint">Email</p>
+            <p className="font-mono text-[12px] text-ink-faint">Email</p>
             <div className="mt-2 flex flex-wrap items-center gap-3">
               <a href={`mailto:${site.email}`} className="text-xl font-medium tracking-[-0.03em] break-all text-ink sm:text-2xl">
                 {site.email}
@@ -73,7 +73,9 @@ export function Contact() {
               <HoverLink href={site.socials.github} label="GitHub" />
             </li>
             <li>
-              <HoverLink href={site.cv} label="Resume" download />
+              <ResumeLink className="roll-hover text-xl font-medium tracking-[-0.03em] text-ink sm:text-2xl">
+                <RollText text="Resume" mode="hover" />
+              </ResumeLink>
             </li>
           </ul>
         </div>
@@ -86,8 +88,8 @@ export function Footer() {
   return (
     <footer className="mx-auto max-w-[1200px] px-4 sm:px-8">
       <div className="flex items-center justify-between border-t border-line py-8 text-sm text-ink-faint">
-        <p>© 2026 {site.name}</p>
-        <a href="#top" className="group inline-flex items-center gap-1.5 hover:text-ink">
+        <p className="font-mono text-[12px]">© 2026 {site.name}</p>
+        <a href="#top" className="group inline-flex items-center gap-1.5 font-mono text-[12px] hover:text-ink">
           Back to top
           <ArrowUp className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5" aria-hidden />
         </a>

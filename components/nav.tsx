@@ -6,6 +6,7 @@ import { site } from "@/content/site";
 import { ease } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import { Monogram } from "./monogram";
+import { ResumeLink } from "./resume-viewer";
 import { RollText } from "./roll-text";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -58,8 +59,8 @@ export function Nav() {
         </a>
 
         <div className="flex items-center gap-1">
-          <ul className="hidden items-center sm:flex">
-            {site.nav.map((l) => {
+          <ul className="hidden items-center lg:flex">
+            {site.nav.map((l, i) => {
               const isActive = active === l.href.slice(1);
               return (
                 <li key={l.href}>
@@ -67,21 +68,28 @@ export function Nav() {
                     href={l.href}
                     aria-current={isActive ? "true" : undefined}
                     className={cn(
-                      "roll-hover flex items-center gap-1.5 rounded-md px-3 py-2 text-sm transition-colors",
+                      "roll-hover flex items-baseline gap-1.5 rounded-md px-3 py-2 text-sm transition-colors",
                       isActive ? "text-ink" : "text-ink-faint hover:text-ink",
                     )}
                   >
-                    <span className={cn("size-1 rounded-full bg-ink transition-opacity", isActive ? "opacity-100" : "opacity-0")} aria-hidden />
+                    <span className={cn("font-mono text-[10.5px] tabular-nums", isActive ? "text-ink" : "text-ink-faint")} aria-hidden>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     <RollText text={l.label} mode="hover" />
                   </a>
                 </li>
               );
             })}
+            <li className="ml-1 border-l border-line pl-1">
+              <ResumeLink className="roll-hover block rounded-md px-3 py-2 font-mono text-[12.5px] text-ink">
+                <RollText text="Resume" mode="hover" />
+              </ResumeLink>
+            </li>
           </ul>
           <ThemeToggle />
           <button
             type="button"
-            className="rounded-md px-3 py-2 text-sm text-ink sm:hidden"
+            className="rounded-md px-3 py-2 font-mono text-[13px] text-ink lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((v) => !v)}
@@ -99,19 +107,29 @@ export function Nav() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2, ease }}
-            className="absolute inset-x-0 top-full border-b border-line bg-bg px-4 pb-4 sm:hidden"
+            className="absolute inset-x-0 top-full border-b border-line bg-bg px-4 pb-4 lg:hidden"
           >
-            {site.nav.map((l) => (
+            {site.nav.map((l, i) => (
               <li key={l.href} className="border-t border-line first:border-t-0">
                 <a
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className={cn("block py-3.5 text-2xl font-medium tracking-tight", active === l.href.slice(1) ? "text-ink" : "text-ink-soft")}
+                  className={cn(
+                    "flex items-baseline gap-3 py-3.5 text-2xl font-medium tracking-[-0.03em]",
+                    active === l.href.slice(1) ? "text-ink" : "text-ink-soft",
+                  )}
                 >
+                  <span className="font-mono text-xs text-ink-faint tabular-nums">{String(i + 1).padStart(2, "0")}</span>
                   {l.label}
                 </a>
               </li>
             ))}
+            <li className="border-t border-line">
+              <ResumeLink onNavigate={() => setOpen(false)} className="flex items-baseline gap-3 py-3.5 text-2xl font-medium tracking-[-0.03em] text-ink-soft">
+                <span className="font-mono text-xs text-ink-faint">↗</span>
+                Resume
+              </ResumeLink>
+            </li>
           </motion.ul>
         )}
       </AnimatePresence>

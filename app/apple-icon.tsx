@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { loadGeist } from "@/lib/og-font";
+import { loadInterTight } from "@/lib/og-font";
 
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
@@ -16,7 +16,7 @@ export default async function AppleIcon() {
           justifyContent: "center",
           background: "#111110",
           color: "#fafaf9",
-          fontFamily: "Geist",
+          fontFamily: "Inter Tight",
           fontSize: 76,
           fontWeight: 600,
           letterSpacing: -4,
@@ -25,6 +25,6 @@ export default async function AppleIcon() {
         GM
       </div>
     ),
-    { ...size, fonts: await loadGeist(600) },
+    { ...size, fonts: await loadInterTight(600) },
   );
 }

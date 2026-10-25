@@ -33,16 +33,16 @@ export function Hackathons() {
                     className="grid flex-1 grid-cols-[1fr_auto] items-center gap-x-4 gap-y-1 py-5 text-left sm:grid-cols-[minmax(0,1.6fr)_minmax(0,0.8fr)_minmax(0,1fr)_4rem_auto] sm:py-6"
                   >
                     <span className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                      <span className={cn("text-2xl tracking-[-0.035em] text-ink sm:text-[28px]", h.highlight ? "font-semibold" : "font-medium")}>{h.name}</span>
+                      <span className={cn("text-2xl tracking-[-0.03em] text-ink sm:text-[28px]", h.highlight ? "font-semibold" : "font-medium")}>{h.name}</span>
                       {h.highlight && (
-                        <span className="inline-flex items-center gap-1.5 text-[11px] text-ink-faint">
+                        <span className="inline-flex items-center gap-1.5 font-mono text-[10.5px] text-ink-faint">
                           <span className="size-1.5 rounded-full bg-accent" aria-hidden /> Top result
                         </span>
                       )}
                     </span>
-                    <span className="order-3 text-sm text-ink-faint sm:order-none">{h.level}</span>
-                    <span className={cn("order-4 text-[15px] sm:order-none", h.highlight ? "text-ink" : "text-ink-soft")}>{h.result}</span>
-                    <span className="order-2 text-sm text-ink-faint tabular-nums sm:order-none">{h.year}</span>
+                    <span className="order-3 font-mono text-[12px] text-ink-faint sm:order-none">{h.level}</span>
+                    <span className={cn("order-4 sm:order-none", h.highlight ? "text-ink" : "text-ink-soft")}>{h.result}</span>
+                    <span className="order-2 font-mono text-[12.5px] text-ink-faint tabular-nums sm:order-none">{h.year}</span>
                     <Plus
                       className={cn("hidden size-4 text-ink-faint transition-transform duration-300 ease-[var(--ease-out-expo)] sm:block", isOpen && "rotate-45")}
                       aria-hidden
@@ -75,10 +75,10 @@ export function Hackathons() {
                       exit={reduce ? undefined : { opacity: 0, transition: { duration: 0.12 } }}
                       className="grid gap-4 pb-6 sm:grid-cols-[minmax(0,1.6fr)_minmax(0,2.8fr)] sm:gap-x-4"
                     >
-                      <p className="text-sm text-ink-faint">{[h.team, h.track].filter(Boolean).join(" · ") || "My roles"}</p>
+                      <p className="font-mono text-[12px] text-ink-faint">{[h.team, h.track].filter(Boolean).join(" · ") || "My roles"}</p>
                       <ul className="flex flex-wrap gap-2">
                         {h.roles.map((r) => (
-                          <li key={r} className="rounded-full px-3 py-1 text-[15px] text-ink ring-1 ring-line-strong">
+                          <li key={r} className="rounded-full px-3 py-1 font-mono text-[12.5px] text-ink ring-1 ring-line-strong">
                             {r}
                           </li>
                         ))}

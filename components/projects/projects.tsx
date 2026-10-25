@@ -1,19 +1,19 @@
 "use client";
 
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "motion/react";
-import { useCallback, useMemo, useRef, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { useCallback, useMemo, useRef, useState, type PointerEvent } from "react";
 import type { Category, Project } from "@/content/site";
 import { ease, layoutSpring } from "@/lib/motion";
 import { cn } from "@/lib/utils";
-import { RollText } from "../roll-text";
-import { CursorPreview, useCursorPreview, useFinePointer } from "./cursor-preview";
+import { Cover, coverLabel } from "../covers";
+import { SectionHeading, sectionClass } from "../section-heading";
 import { ProjectDialog } from "./project-dialog";
-import { Shot } from "./shot";
 
 type Filter = "All" | Category;
 type View = "list" | "grid";
 
-const filters: Filter[] = ["All", "ML", "Full-stack", "Research"];
+const filters: Filter[] = ["All", "ML", "Full-stack"];
 
 /** A segmented control whose active pill slides between options (shared layoutId). */
 function Segmented<T extends string>({
@@ -54,10 +54,10 @@ function Segmented<T extends string>({
 
 function StatusTag({ project }: { project: Project }) {
   if (project.status === "in-progress")
-    return <span className="rounded-full px-2 py-0.5 text-[11px] text-ink-faint ring-1 ring-line-strong">In progress</span>;
+    return <span className="rounded-full px-2 py-0.5 font-mono text-[10.5px] text-ink-faint ring-1 ring-line-strong">In progress</span>;
   if (project.status === "live")
     return (
-      <span className="inline-flex items-center gap-1.5 text-[11px] text-ink-faint">
+      <span className="inline-flex items-center gap-1.5 font-mono text-[10.5px] text-ink-faint">
         <span className="size-1.5 rounded-full bg-accent" aria-hidden /> Live
       </span>
     );
@@ -70,15 +70,14 @@ export function Projects({ projects }: { projects: readonly Project[] }) {
   const [open, setOpen] = useState<Project | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
   const returnFocus = useRef<HTMLElement | null>(null);
-  const fine = useFinePointer();
   const reduce = useReducedMotion();
-  const { sx, sy, move } = useCursorPreview();
 
   const visible = useMemo(
     () => (filter === "All" ? projects : projects.filter((p) => p.categories.includes(filter))),
     [filter, projects],
   );
-  const preview = fine && view === "list";
+  // Desktop-only row hover: mouse pointers only, so touch never triggers it.
+  const hoverRow = (slug: string) => (e: PointerEvent) => e.pointerType === "mouse" && setHovered(slug);
 
   const openProject = (p: Project, el: HTMLElement) => {
     returnFocus.current = el;
@@ -101,12 +100,8 @@ export function Projects({ projects }: { projects: readonly Project[] }) {
       };
 
   return (
-    <section id="projects" aria-labelledby="projects-title" className="mx-auto max-w-[1200px] px-4 py-20 sm:px-8 sm:py-28">
-      <div className="flex flex-wrap items-end justify-between gap-6 border-b border-line pb-6">
-        <h2 id="projects-title" className="flex items-start gap-2 text-[clamp(2.75rem,8vw,6rem)] leading-none font-semibold tracking-[-0.05em] text-ink">
-          <RollText text="Projects" mode="view" />
-          <span className="mt-[0.35em] text-sm font-normal tracking-normal text-ink-faint tabular-nums">({String(visible.length).padStart(2, "0")})</span>
-        </h2>
+    <section id="projects" aria-labelledby="projects-title" className={sectionClass}>
+      <SectionHeading id="projects-title" title="Projects" count={visible.length}>
         <div className="flex flex-wrap items-center gap-2">
           <Segmented id="filter" label="Filter projects by category" options={filters} value={filter} onChange={setFilter} />
           <Segmented
@@ -118,17 +113,13 @@ export function Projects({ projects }: { projects: readonly Project[] }) {
             render={(o) => (o === "list" ? "List" : "Grid")}
           />
         </div>
-      </div>
+      </SectionHeading>
 
       <LayoutGroup>
         <motion.ul
           layout={!reduce}
           transition={layoutSpring}
-          className={cn(
-                        view === "list" ? "flex flex-col" : "mt-8 grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3",
-          )}
-          onPointerMove={preview ? (e) => move(e) : undefined}
-          onPointerEnter={preview ? (e) => move(e, true) : undefined}
+          className={view === "list" ? "flex flex-col" : "mt-8 grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3"}
           onPointerLeave={() => setHovered(null)}
         >
           <AnimatePresence mode="popLayout" initial={false}>
@@ -139,56 +130,52 @@ export function Projects({ projects }: { projects: readonly Project[] }) {
                     type="button"
                     aria-haspopup="dialog"
                     onClick={(e) => openProject(p, e.currentTarget)}
-                    onPointerEnter={() => preview && setHovered(p.slug)}
+                    onPointerEnter={hoverRow(p.slug)}
                     onFocus={() => setHovered(null)}
                     className={cn(
-                      "grid w-full grid-cols-[1fr_auto] items-center gap-x-4 gap-y-1 py-5 text-left transition-opacity duration-300 sm:grid-cols-[3rem_minmax(0,1.1fr)_minmax(0,1.6fr)_auto] sm:py-6",
-                      hovered && hovered !== p.slug && "opacity-35",
+                      "grid w-full grid-cols-[1fr_auto] items-center gap-x-4 gap-y-1 py-5 text-left transition-opacity duration-[250ms] ease-[var(--ease-out-expo)] sm:grid-cols-[3rem_minmax(0,1fr)_minmax(0,1.4fr)_9rem_1.5rem] sm:py-6",
+                      hovered && hovered !== p.slug && "opacity-50",
                     )}
                   >
-                    <span className="hidden text-sm text-ink-faint tabular-nums sm:block">{String(i + 1).padStart(2, "0")}</span>
-                    <span className="flex items-center gap-3">
-                      <span
-                        className={cn(
-                          "text-2xl font-medium tracking-[-0.035em] text-ink transition-transform duration-300 ease-[var(--ease-out-expo)] sm:text-[28px]",
-                          hovered === p.slug && "translate-x-1.5",
-                        )}
-                      >
-                        {p.title}
-                      </span>
+                    <span className="hidden font-mono text-[12.5px] text-ink-faint tabular-nums sm:block">{String(i + 1).padStart(2, "0")}</span>
+                    <span
+                      className={cn(
+                        "flex items-center gap-3 transition-transform duration-[250ms] ease-[var(--ease-out-expo)]",
+                        hovered === p.slug && "translate-x-1.5",
+                      )}
+                    >
+                      <span className="text-2xl font-medium tracking-[-0.03em] text-ink sm:text-[28px]">{p.title}</span>
                       <StatusTag project={p} />
                     </span>
-                    <span className="order-last col-span-2 text-[15px] text-ink-soft sm:order-none sm:col-span-1">{p.oneLiner}</span>
-                    <span className="flex items-center gap-4 justify-self-end text-sm text-ink-faint">
-                      <span className="hidden md:inline">{p.categories.join(", ")}</span>
-                      {p.year && <span className="tabular-nums">{p.year}</span>}
+                    <span
+                      className={cn(
+                        "order-last col-span-2 text-ink-soft transition-transform duration-[250ms] ease-[var(--ease-out-expo)] sm:order-none sm:col-span-1",
+                        hovered === p.slug && "sm:translate-x-1.5",
+                      )}
+                    >
+                      {p.oneLiner}
                     </span>
-                    {/* Touch devices get an inline thumbnail instead of the cursor preview (pure CSS, so it's right on first paint) */}
-                    {p.image && (
-                      <Shot
-                        project={p}
-                        sizes="(min-width: 640px) 50vw, 100vw"
-                        className="col-span-2 mt-3 rounded-lg ring-1 ring-line sm:col-span-4 [@media(hover:hover)_and_(pointer:fine)]:hidden"
-                      />
-                    )}
+                    <span className="hidden justify-self-end font-mono text-[12px] text-ink-faint md:inline">{p.categories.join(", ")}</span>
+                    <ArrowUpRight
+                      className={cn(
+                        "size-5 justify-self-end text-ink opacity-0 transition-[opacity,transform] duration-[250ms] ease-[var(--ease-out-expo)]",
+                        hovered === p.slug && "translate-x-0.5 -translate-y-0.5 opacity-100",
+                      )}
+                      aria-hidden
+                    />
                   </button>
                 ) : (
                   <button
                     type="button"
                     aria-haspopup="dialog"
                     onClick={(e) => openProject(p, e.currentTarget)}
-                    className="group/card block w-full text-left"
+                    className="cover-host block w-full text-left"
                   >
-                    <div className="overflow-hidden rounded-xl ring-1 ring-line">
-                      <div className="transition-transform duration-500 ease-[var(--ease-out-expo)] [@media(hover:hover)]:group-hover/card:scale-[1.03]">
-                        <Shot project={p} sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" />
-                      </div>
-                    </div>
+                    <Cover id={p.slug} label={coverLabel(p)} />
                     <div className="mt-4 flex items-baseline justify-between gap-3">
                       <span className="text-xl font-medium tracking-[-0.03em] text-ink">{p.title}</span>
-                      {p.year && <span className="text-sm text-ink-faint tabular-nums">{p.year}</span>}
                     </div>
-                    <p className="mt-1 text-[15px] text-ink-soft">{p.oneLiner}</p>
+                    <p className="mt-1 text-ink-soft">{p.oneLiner}</p>
                     <div className="mt-2">
                       <StatusTag project={p} />
                     </div>
@@ -200,7 +187,6 @@ export function Projects({ projects }: { projects: readonly Project[] }) {
         </motion.ul>
       </LayoutGroup>
 
-      {preview && <CursorPreview projects={projects} active={hovered} x={sx} y={sy} />}
       <AnimatePresence>{open && <ProjectDialog key={open.slug} project={open} onClose={close} />}</AnimatePresence>
     </section>
   );

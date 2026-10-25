@@ -8,7 +8,7 @@ export function Monogram({ className }: { className?: string }) {
         y="21"
         textAnchor="middle"
         dominantBaseline="central"
-        fontFamily="var(--font-geist), system-ui, sans-serif"
+        fontFamily="var(--font-inter-tight), system-ui, sans-serif"
         fontWeight="650"
         fontSize="16"
         letterSpacing="-0.8"

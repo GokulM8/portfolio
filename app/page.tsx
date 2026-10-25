@@ -1,9 +1,11 @@
 import { About } from "@/components/about";
 import { Contact, Footer } from "@/components/contact";
+import { Experience } from "@/components/experience";
 import { Hackathons } from "@/components/hackathons";
 import { Hero } from "@/components/hero";
 import { Nav } from "@/components/nav";
 import { Projects } from "@/components/projects/projects";
+import { ResumeProvider } from "@/components/resume-viewer";
 import { Writing } from "@/components/writing";
 import { site } from "@/content/site";
 
@@ -15,7 +17,6 @@ const personLd = {
   email: `mailto:${site.email}`,
   jobTitle: "Machine Learning Engineer",
   description: site.description,
-  image: `${site.url}${site.hero.portrait.src}`,
   address: { "@type": "PostalAddress", addressLocality: "Vijayawada", addressCountry: "IN" },
   alumniOf: { "@type": "CollegeOrUniversity", name: site.about.academic.school },
   knowsAbout: ["Machine learning", "Applied AI", "Health-tech", "Data science"],
@@ -24,7 +25,7 @@ const personLd = {
 
 export default function Home() {
   return (
-    <>
+    <ResumeProvider>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }} />
       <a href="#projects" className="sr-only z-[60] rounded-md bg-ink px-4 py-2 text-bg focus:not-sr-only focus:fixed focus:top-3 focus:left-3">
         Skip to projects
@@ -33,12 +34,13 @@ export default function Home() {
       <main>
         <Hero />
         <About />
+        <Experience />
         <Projects projects={site.projects} />
         <Hackathons />
         <Writing />
         <Contact />
       </main>
       <Footer />
-    </>
+    </ResumeProvider>
   );
 }

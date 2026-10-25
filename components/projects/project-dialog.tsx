@@ -7,12 +7,12 @@ import { createPortal } from "react-dom";
 import type { Project } from "@/content/site";
 import { ease } from "@/lib/motion";
 import { GithubIcon } from "../icons";
-import { Shot } from "./shot";
+import { Cover, coverLabel } from "../covers";
 
 function Section({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="grid gap-2 border-t border-line py-6 sm:grid-cols-[140px_1fr] sm:gap-8">
-      <h3 className="text-sm text-ink-faint">{label}</h3>
+      <h3 className="font-mono text-[12px] text-ink-faint">{label}</h3>
       <div className="text-ink-soft">{children}</div>
     </div>
   );
@@ -91,9 +91,8 @@ export function ProjectDialog({ project, onClose }: { project: Project; onClose:
           className="relative mx-auto my-0 min-h-full max-w-[880px] bg-bg px-5 pt-5 pb-10 sm:my-10 sm:min-h-0 sm:rounded-2xl sm:px-10 sm:pt-8 sm:ring-1 sm:ring-line"
         >
           <div className="flex items-start justify-between gap-6">
-            <p className="pt-2 text-sm text-ink-faint">
+            <p className="pt-2.5 font-mono text-[12px] text-ink-faint">
               {project.categories.join(" · ")}
-              {project.year && ` · ${project.year}`}
               {project.status === "in-progress" && " · In progress"}
             </p>
             <button
@@ -106,20 +105,20 @@ export function ProjectDialog({ project, onClose }: { project: Project; onClose:
               <X className="size-4" aria-hidden />
             </button>
           </div>
-          <h2 id={titleId} className="mt-4 text-[clamp(2.5rem,7vw,4.25rem)] leading-[0.95] font-semibold tracking-[-0.05em] text-ink">
+          <h2 id={titleId} className="mt-4 text-[clamp(2.5rem,7vw,4.25rem)] leading-[0.95] font-semibold tracking-[-0.03em] text-ink">
             {project.title}
           </h2>
           <p className="mt-4 max-w-xl text-lg text-ink-soft">{project.oneLiner}</p>
 
-          {project.image && <Shot project={project} sizes="(min-width: 880px) 800px, 100vw" className="mt-8 rounded-xl ring-1 ring-line" priority />}
+          <Cover id={project.slug} label={coverLabel(project)} className="mt-8" />
 
           {metrics.length > 0 && (
             <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-line pt-6">
               {metrics.map((m) => (
                 <div key={m.label}>
                   <dt className="sr-only">{m.label}</dt>
-                  <dd className="text-3xl font-semibold tracking-[-0.04em] text-ink sm:text-4xl">{m.value}</dd>
-                  <dd className="mt-1 text-[13px] leading-snug text-ink-faint">{m.label}</dd>
+                  <dd className="font-mono text-2xl font-medium tracking-[-0.02em] text-ink sm:text-3xl">{m.value}</dd>
+                  <dd className="mt-1.5 text-[13px] leading-snug text-ink-faint">{m.label}</dd>
                 </div>
               ))}
             </dl>
@@ -147,14 +146,18 @@ export function ProjectDialog({ project, onClose }: { project: Project; onClose:
               </ul>
             </Section>
             <Section label="Stack">
-              <p className="text-ink">{project.stack.join(", ")}</p>
+              <ul className="flex flex-wrap gap-1.5">
+                {project.stack.map((t) => (
+                  <li key={t} className="rounded-full px-2.5 py-0.5 font-mono text-[12px] text-ink ring-1 ring-line-strong">
+                    {t}
+                  </li>
+                ))}
+              </ul>
             </Section>
           </div>
 
           <div className="flex flex-wrap gap-2 border-t border-line pt-6">
             {project.live && <ExtLink href={project.live} primary>Live site {arrow}</ExtLink>}
-            {project.paper && <ExtLink href={project.paper} primary>Paper {arrow}</ExtLink>}
-            {project.demo && <ExtLink href={project.demo}>Dashboard {arrow}</ExtLink>}
             {project.source && (
               <ExtLink href={project.source}>
                 <GithubIcon className="size-4" /> Source

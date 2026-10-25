@@ -5,9 +5,10 @@ import { useRef, useState, type KeyboardEvent } from "react";
 import { site } from "@/content/site";
 import { ease, layoutSpring } from "@/lib/motion";
 import { cn } from "@/lib/utils";
+import { ResumeLink } from "./resume-viewer";
 import { SectionHeading, sectionClass } from "./section-heading";
 
-const tabs = ["Academic", "Experience", "Stack", "Info"] as const;
+const tabs = ["Academic", "Stack", "Info"] as const;
 type Tab = (typeof tabs)[number];
 
 const row = "grid gap-x-8 gap-y-2 border-b border-line py-6 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]";
@@ -17,45 +18,17 @@ function Academic() {
   return (
     <div>
       <div className={row}>
-        <p className="text-sm text-ink-faint tabular-nums">{a.period}</p>
+        <p className="font-mono text-[12.5px] text-ink-faint tabular-nums">{a.period}</p>
         <div>
-          <p className="text-2xl font-medium tracking-[-0.035em] text-ink sm:text-[28px]">{a.degree}</p>
+          <p className="text-2xl font-medium tracking-[-0.03em] text-ink sm:text-[28px]">{a.degree}</p>
           <p className="mt-1 text-ink-soft">{a.school}</p>
         </div>
       </div>
       <div className={row}>
-        <p className="text-sm text-ink-faint">CGPA</p>
-        <p className="text-2xl font-medium tracking-[-0.035em] text-ink tabular-nums">{a.cgpa}</p>
-      </div>
-      <div className={row}>
-        <p className="text-sm text-ink-faint">Focus</p>
+        <p className="font-mono text-[12.5px] text-ink-faint">Focus</p>
         <p className="max-w-xl text-ink-soft">{a.focus}</p>
       </div>
     </div>
-  );
-}
-
-function Experience() {
-  return (
-    <ol>
-      {site.about.experience.map((e) => (
-        <li key={e.company} className={row}>
-          <p className="text-sm text-ink-faint tabular-nums">{e.period}</p>
-          <div>
-            <p className="text-2xl font-medium tracking-[-0.035em] text-ink sm:text-[28px]">{e.company}</p>
-            <p className="mt-1 text-ink-soft">{e.role}</p>
-            <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[15px] text-ink-soft">
-              {e.points.map((p) => (
-                <li key={p} className="flex items-center gap-2">
-                  <span className="size-1 rounded-full bg-ink-faint" aria-hidden />
-                  {p}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </li>
-      ))}
-    </ol>
   );
 }
 
@@ -66,13 +39,23 @@ function Stack() {
         .filter((t) => t.items.length > 0)
         .map((t) => (
           <div key={t.tier} className={row}>
-            <p className="text-sm text-ink-faint">{t.tier}</p>
-            <ul className="flex flex-wrap gap-2">
+            <p className="font-mono text-[12.5px] text-ink-faint">{t.tier}</p>
+            <ul className="flex flex-wrap items-center gap-2">
               {t.items.map((i) => (
-                <li key={i} className="rounded-full px-3 py-1 text-[15px] text-ink ring-1 ring-line-strong">
+                <li key={i} className="rounded-full px-3 py-1 font-mono text-[12.5px] text-ink ring-1 ring-line-strong">
                   {i}
                 </li>
               ))}
+              {t.upNext.length > 0 && (
+                <li className="flex flex-wrap items-center gap-2">
+                  <span className="ml-1 font-mono text-[11px] tracking-[0.08em] text-ink-faint uppercase">Up next</span>
+                  {t.upNext.map((i) => (
+                    <span key={i} className="rounded-full border border-dashed border-line-strong px-3 py-1 font-mono text-[12.5px] text-ink-faint">
+                      {i}
+                    </span>
+                  ))}
+                </li>
+              )}
             </ul>
           </div>
         ))}
@@ -85,23 +68,21 @@ function Info() {
     <dl>
       {site.about.info.map((i) => (
         <div key={i.label} className={row}>
-          <dt className="text-sm text-ink-faint">{i.label}</dt>
+          <dt className="font-mono text-[12.5px] text-ink-faint">{i.label}</dt>
           <dd className="text-lg text-ink">{i.value}</dd>
         </div>
       ))}
       <div className={row}>
-        <dt className="text-sm text-ink-faint">Resume</dt>
+        <dt className="font-mono text-[12.5px] text-ink-faint">Resume</dt>
         <dd>
-          <a href={site.cv} download className="text-lg text-ink underline decoration-line-strong underline-offset-4 hover:decoration-ink">
-            Download PDF
-          </a>
+          <ResumeLink className="text-lg text-ink underline decoration-line-strong underline-offset-4 hover:decoration-ink">View resume</ResumeLink>
         </dd>
       </div>
     </dl>
   );
 }
 
-const panels: Record<Tab, () => React.ReactNode> = { Academic, Experience, Stack, Info };
+const panels: Record<Tab, () => React.ReactNode> = { Academic, Stack, Info };
 
 /** About, as an ARIA tablist: arrow keys / Home / End move between tabs; a sliding underline marks the active one. */
 export function About() {

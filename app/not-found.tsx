@@ -13,7 +13,7 @@ export default function NotFound() {
         </a>
       </header>
       <div className="flex flex-1 flex-col justify-center border-t border-line py-20">
-        <RollText as="h1" mode="load" text="404" className="block text-[clamp(6rem,30vw,20rem)] leading-none font-semibold tracking-[-0.06em] text-ink" />
+        <RollText as="h1" mode="load" text="404" className="block text-[clamp(6rem,30vw,20rem)] leading-none font-semibold tracking-[-0.04em] text-ink" />
         <p className="mt-6 max-w-md text-lg text-ink-soft">This page doesn&rsquo;t exist, or it moved when the site was rebuilt.</p>
         <a href="/" className="roll-hover mt-10 w-fit border-b border-line-strong pb-1 text-xl font-medium tracking-[-0.03em] text-ink hover:border-ink">
           <RollText text="Back home" mode="hover" />
