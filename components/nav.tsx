@@ -60,7 +60,7 @@ export function Nav() {
 
         <div className="flex items-center gap-1">
           <ul className="hidden items-center lg:flex">
-            {site.nav.map((l, i) => {
+            {site.nav.map((l) => {
               const isActive = active === l.href.slice(1);
               return (
                 <li key={l.href}>
@@ -68,13 +68,10 @@ export function Nav() {
                     href={l.href}
                     aria-current={isActive ? "true" : undefined}
                     className={cn(
-                      "roll-hover flex items-baseline gap-1.5 rounded-md px-3 py-2 text-sm transition-colors",
+                      "roll-hover block rounded-md px-3 py-2 text-sm transition-colors",
                       isActive ? "text-ink" : "text-ink-faint hover:text-ink",
                     )}
                   >
-                    <span className={cn("font-mono text-[10.5px] tabular-nums", isActive ? "text-ink" : "text-ink-faint")} aria-hidden>
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
                     <RollText text={l.label} mode="hover" />
                   </a>
                 </li>
@@ -109,24 +106,22 @@ export function Nav() {
             transition={{ duration: 0.2, ease }}
             className="absolute inset-x-0 top-full border-b border-line bg-bg px-4 pb-4 lg:hidden"
           >
-            {site.nav.map((l, i) => (
+            {site.nav.map((l) => (
               <li key={l.href} className="border-t border-line first:border-t-0">
                 <a
                   href={l.href}
                   onClick={() => setOpen(false)}
                   className={cn(
-                    "flex items-baseline gap-3 py-3.5 text-2xl font-medium tracking-[-0.03em]",
+                    "block py-3.5 text-2xl font-medium tracking-[-0.03em]",
                     active === l.href.slice(1) ? "text-ink" : "text-ink-soft",
                   )}
                 >
-                  <span className="font-mono text-xs text-ink-faint tabular-nums">{String(i + 1).padStart(2, "0")}</span>
                   {l.label}
                 </a>
               </li>
             ))}
             <li className="border-t border-line">
-              <ResumeLink onNavigate={() => setOpen(false)} className="flex items-baseline gap-3 py-3.5 text-2xl font-medium tracking-[-0.03em] text-ink-soft">
-                <span className="font-mono text-xs text-ink-faint">↗</span>
+              <ResumeLink onNavigate={() => setOpen(false)} className="block py-3.5 text-2xl font-medium tracking-[-0.03em] text-ink-soft">
                 Resume
               </ResumeLink>
             </li>
