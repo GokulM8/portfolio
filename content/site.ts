@@ -9,27 +9,29 @@ export type Metric = {
   label: string;
 };
 
-export type CaseStudy = {
-  problem: string;
-  approach: string[];
-  results: string[];
-  next: string[];
-};
+export type Category = "ML" | "Full-stack" | "Research";
 
 export type Project = {
   slug: string;
   title: string;
-  category: string;
-  status: "live" | "research" | "in-progress";
-  summary: string;
+  /** One line for the list row. */
+  oneLiner: string;
+  year: string;
+  categories: Category[];
+  status: "live" | "in-progress" | "research";
+  /** Up to 3 shown. Leave value empty ("") to hide one. */
   metrics: Metric[];
+  problem: string;
+  approach: string[];
+  results: string[];
   stack: string[];
   live?: string;
   source?: string;
+  paper?: string;
+  demo?: string;
   highlight?: string;
-  /** Screenshot in /public/work. Leave out to show an empty frame. */
+  /** Screenshot in /public/work (webp). Without one, the preview shows the project name. */
   image?: { src: string; alt: string };
-  caseStudy: CaseStudy;
 };
 
 export type Paper = {
@@ -60,12 +62,19 @@ export const site = {
     github: "https://www.github.com/GokulM8",
   },
   nav: [
-    { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
-    { label: "Work", href: "#work" },
-    { label: "Experience", href: "#experience" },
+    { label: "Projects", href: "#projects" },
+    { label: "Hackathons", href: "#hackathons" },
+    { label: "Writing", href: "#writing" },
     { label: "Contact", href: "#contact" },
   ] satisfies Link[],
+
+  hero: {
+    greeting: "Hi, I’m Gokul",
+    intro:
+      "ML engineer and CS undergrad at VIT-AP. I build applied AI systems, mostly in health-tech, and care about the unglamorous parts: clean data, honest metrics, and models that actually ship.",
+    portrait: { src: "/portrait.webp", alt: "Illustrated avatar of Gokul" }, // TODO: swap for a real photo
+  },
 
   strip: {
     heading: "Worked with & competed at",
@@ -90,105 +99,153 @@ export const site = {
     ],
   },
 
+  // Live projects first. TODO: confirm each year.
   projects: [
     {
       slug: "safepulse",
       title: "SafePulse",
-      category: "Machine learning · Health-tech",
+      oneLiner: "Explainable cardiovascular risk prediction",
+      year: "2026",
+      categories: ["ML"],
       status: "live",
-      summary:
-        "Cardiovascular risk prediction with an XGBoost model exported to ONNX and explained feature-by-feature with SHAP, trained on the UCI Heart Disease and Framingham datasets.",
       metrics: [
         { value: "", label: "ROC-AUC" }, // TODO: add your AUC, e.g. "0.91"
         { value: "2", label: "clinical datasets" },
         { value: "SHAP", label: "per-patient explanations" },
       ],
+      problem:
+        "Heart disease is one of India's leading causes of death, yet most risk calculators hand back a single number with no reason attached. Patients and clinicians can't act on a score they can't question.",
+      approach: [
+        "Merged the UCI Heart Disease and Framingham datasets into one harmonised training set.",
+        "Trained an XGBoost classifier, validated on held-out data, and exported it to ONNX for fast, portable inference.",
+        "Used SHAP to break every prediction into per-feature contributions.",
+      ],
+      results: ["A risk score that explains itself: the factors pushing it up or down, per patient."],
       stack: ["Python", "XGBoost", "ONNX", "SHAP"],
       live: "https://www.safepulse.in/", // TODO: deployment currently returns 404 DEPLOYMENT_NOT_FOUND
-      // image: { src: "/work/safepulse.jpg", alt: "SafePulse risk report with SHAP explanation" }, // TODO: add screenshot
-      caseStudy: {
-        problem:
-          "Heart disease is one of India's leading causes of death, yet most risk calculators hand back a single number with no reason attached. Patients and clinicians can't act on a score they can't question.",
-        approach: [
-          "Merged the UCI Heart Disease and Framingham datasets and harmonised their features into one clean training set.",
-          "Trained a gradient-boosted XGBoost classifier, validated on held-out data rather than the training split.",
-          "Exported the model to ONNX so inference is fast and portable, independent of the Python training stack.",
-          "Used SHAP to break every prediction down into per-feature contributions, so each result explains itself.",
-        ],
-        results: [
-          "A live risk-assessment app that returns a score together with the factors pushing it up or down.",
-          "One portable ONNX model artifact, decoupled from training code.",
-        ],
-        next: [
-          "Calibrate and validate on Indian cohort data, since both source datasets are Western populations.",
-          "Run fairness checks across age and sex, and get clinician feedback on how explanations are worded.",
-        ],
-      },
+      // image: { src: "/work/safepulse.webp", alt: "SafePulse risk report with SHAP explanation" }, // TODO
     },
     {
       slug: "rurallink-ai",
       title: "RuralLink AI",
-      category: "AI · Full stack",
+      oneLiner: "Multilingual, voice-first assistant for rural India",
+      year: "2026",
+      categories: ["ML", "Full-stack"],
       status: "live",
-      summary:
-        "A multilingual, voice-first assistant connecting rural communities to government schemes and nearby services.",
       metrics: [
         { value: "8", label: "Indic languages" },
         { value: "Finalist", label: "USAII Global AI Hackathon" },
+        { value: "Voice", label: "and text input" },
       ],
+      problem:
+        "Government schemes and nearby services exist, but for many people in rural India they're hard to find: scattered, mostly in English, and written for high literacy.",
+      approach: [
+        "Gemini handles multilingual understanding across 8 Indic languages, with voice input so people can ask instead of type.",
+        "Mapbox and the OpenStreetMap Overpass API locate nearby facilities; Supabase stores app data.",
+        "Led the team end to end: scope, API design, data model and AI integration.",
+      ],
+      results: ["Finalist at the USAII Global AI Hackathon 2026.", "Live app that switches the whole interface into the user's language."],
       stack: ["Next.js", "Gemini", "Supabase", "Mapbox"],
       live: "https://rural-link-ai.vercel.app/",
       source: "https://github.com/GokulM8/rural-link-ai",
       highlight: "USAII Global AI Hackathon 2026 Finalist",
-      image: { src: "/work/rurallink-ai.jpg", alt: "RuralLink AI map view of Vijayawada with the interface in Telugu" },
-      caseStudy: {
-        problem:
-          "Government schemes and nearby services exist, but for many people in rural India they're hard to find: information is scattered, mostly in English, and assumes high literacy.",
-        approach: [
-          "Built a Next.js app with Gemini handling multilingual understanding across 8 Indic languages.",
-          "Added voice-based support so people can ask instead of type.",
-          "Mapped nearby facilities with Mapbox and the OpenStreetMap Overpass API, with Supabase for app data.",
-          "Led the team end to end: product scope, API design, data model and AI integration.",
-        ],
-        results: [
-          "Finalist at the USAII Global AI Hackathon 2026, an international competition.",
-          "Live app that switches the whole interface into the user's language.",
-        ],
-        next: [
-          "A low-bandwidth mode and an SMS or IVR channel for areas with patchy data.",
-          "A verified, regularly refreshed scheme database instead of relying on model knowledge.",
-        ],
-      },
+      image: { src: "/work/rurallink-ai.webp", alt: "RuralLink AI map view of Vijayawada with the interface in Telugu" },
     },
     {
       slug: "smart-park",
       title: "Smart Park",
-      category: "Full stack",
+      oneLiner: "Real-time parking management",
+      year: "2026",
+      categories: ["Full-stack"],
       status: "live",
-      summary:
-        "Parking management with live slot tracking, entry and exit logging, and an admin dashboard.",
       metrics: [
-        { value: "Live", label: "slot availability" },
         { value: "3", label: "core flows" },
+        { value: "Live", label: "slot availability" },
       ],
+      problem: "Manually run parking lots lose track of which slots are free, so drivers circle and staff reconcile entries by hand.",
+      approach: [
+        "React + TypeScript on Vite, with Supabase for auth and data.",
+        "Slots, vehicles and sessions modelled so entry and exit update availability immediately.",
+        "An admin dashboard for managing slots and reviewing activity.",
+      ],
+      results: ["A deployed system covering slot tracking, vehicle entry and exit, and admin management."],
       stack: ["React", "TypeScript", "Supabase", "Vite"],
       live: "https://smart-park-green-eight.vercel.app",
       source: "https://github.com/GokulM8/smart-park",
-      image: { src: "/work/smart-park.jpg", alt: "ParkSmart sign-in screen" }, // TODO: swap for a dashboard screenshot
-      caseStudy: {
-        problem:
-          "Manually run parking lots lose track of which slots are free, so drivers circle and staff reconcile entries by hand.",
-        approach: [
-          "Built a React + TypeScript app on Vite with Supabase for auth and data.",
-          "Modelled slots, vehicles and sessions so entry and exit update availability immediately.",
-          "Added an admin dashboard for managing slots and reviewing activity.",
-        ],
-        results: ["A working, deployed system covering slot tracking, vehicle entry and exit, and admin management."],
-        next: [
-          "Licence-plate recognition at the gate to remove manual entry.",
-          "Occupancy forecasting from historical sessions to predict busy hours.",
-        ],
-      },
+      image: { src: "/work/smart-park.webp", alt: "ParkSmart sign-in screen" }, // TODO: swap for a dashboard screenshot
+    },
+    {
+      slug: "care-transition-analytics",
+      title: "Care Transition Analytics",
+      oneLiner: "U.S. UAC care-pipeline analysis, published on SSRN",
+      year: "2026",
+      categories: ["Research"],
+      status: "research",
+      metrics: [
+        { value: "5", label: "custom KPIs" },
+        { value: "SSRN", label: "published" },
+      ],
+      problem: "Care-transition data for unaccompanied children is public but hard to read as a pipeline, so bottlenecks stay hidden.",
+      approach: ["Cleaned and modelled the pipeline in Pandas.", "Defined 5 custom KPIs and built an interactive Streamlit dashboard around them."],
+      results: ["Findings published on SSRN, with a public dashboard."],
+      stack: ["Python", "Pandas", "Streamlit"],
+      paper: "https://papers.ssrn.com/abstract=6811798", // TODO: confirm this is the Care Transition paper
+      demo: "https://care-transition-cbp-ov9vzm4nnkreiaowsz6guy.streamlit.app/",
+      source: "https://github.com/GokulM8/Care-Transition-CBP",
+    },
+    {
+      slug: "buyer-segmentation",
+      title: "Buyer Segmentation",
+      oneLiner: "Clustering real-estate investor profiles, published on SSRN",
+      year: "2026",
+      categories: ["ML", "Research"],
+      status: "research",
+      metrics: [
+        { value: "2", label: "clustering methods" },
+        { value: "SSRN", label: "published" },
+      ],
+      problem: "Real-estate markets treat buyers as one group, though investors behave very differently from owner-occupiers.",
+      approach: ["Engineered buyer features from Parcl market data.", "Compared K-Means and hierarchical clustering to profile distinct investor types."],
+      results: ["Interpretable investor segments, published on SSRN."],
+      stack: ["Python", "scikit-learn", "Pandas"],
+      paper: "", // TODO: this paper's own SSRN link
+      source: "https://github.com/GokulM8/Buyer-Segmentation-and-Investment-Profiling",
+    },
+    {
+      slug: "archlens-ai",
+      title: "ArchLens AI",
+      oneLiner: "Code-to-architecture graphs with grounded AI explanations",
+      year: "2026",
+      categories: ["ML", "Full-stack"],
+      status: "in-progress",
+      metrics: [],
+      problem: "Large codebases hide their real architecture; diagrams drift and AI summaries hallucinate structure that isn't there.",
+      approach: [
+        "Parse a codebase into a verified dependency graph with NetworkX.",
+        "Flag architectural health risks from the graph itself.",
+        "Ground every AI explanation and refactoring suggestion in that graph.",
+      ],
+      results: ["In progress."],
+      stack: ["FastAPI", "NetworkX", "Pydantic", "OpenAI"],
+      source: "https://github.com/GokulM8/ArchLens-AI",
+    },
+    {
+      slug: "deepfake-shield",
+      title: "DeepFake Shield",
+      oneLiner: "Multimodal forensics for AI-generated media",
+      year: "2026",
+      categories: ["ML"],
+      status: "in-progress",
+      metrics: [],
+      problem: "AI-generated video, images and audio are now convincing enough that people can't tell them apart from real media.",
+      approach: [
+        "Detect, localise and explain manipulation across video, image and audio.",
+        "EfficientNet and transformer models with temporal analysis for video.",
+        "Explainable outputs that show where and why media looks synthetic.",
+      ],
+      results: ["In progress."],
+      stack: ["PyTorch", "EfficientNet", "Transformers", "FastAPI", "Next.js"],
+      source: "https://github.com/GokulM8/deepfake-shield-pro",
     },
   ] satisfies Project[],
 
@@ -210,19 +267,6 @@ export const site = {
       },
     ] satisfies Paper[],
   },
-
-  inProgress: [
-    {
-      title: "ArchLens AI",
-      summary: "Code-to-architecture graphs with grounded AI explanations.",
-      source: "https://github.com/GokulM8/ArchLens-AI",
-    },
-    {
-      title: "DeepFake Shield",
-      summary: "Multimodal forensics for AI-generated video, image and audio.",
-      source: "https://github.com/GokulM8/deepfake-shield-pro",
-    },
-  ],
 
   experience: [
     {

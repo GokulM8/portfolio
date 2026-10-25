@@ -3,25 +3,21 @@ import type { Transition } from "motion/react";
 
 export const ease = [0.22, 1, 0.36, 1] as const;
 
+/** Fade-and-rise reveals: once, triggered slightly before the element is fully in view. */
 export const reveal = {
-  duration: 0.5,
-  y: 20,
-  stagger: 0.05,
-  viewport: { once: true, margin: "0px 0px -15% 0px" },
+  duration: 0.45,
+  y: 16,
+  stagger: 0.04,
+  viewport: { once: true, margin: "0px 0px -12% 0px" },
 } as const;
 
-/** Hover, tap and pointer-follow interactions. */
-export const springOptions = { stiffness: 400, damping: 30 } as const;
-export const spring: Transition = { type: "spring", ...springOptions };
+/** Rolling letters (the CSS in globals.css mirrors these). */
+export const roll = { duration: 0.5, stagger: 0.025 } as const;
 
-/** Card → case-study shared layout transition. */
-export const layoutTransition: Transition = { duration: 0.55, ease };
+/** Cursor-following project preview. */
+export const followSpring = { stiffness: 300, damping: 30, mass: 0.6 } as const;
 
-export const lenisOptions = {
-  lerp: 0.13,
-  smoothWheel: true,
-  syncTouch: false, // native scrolling on touch devices
-} as const;
+/** Layout animations: list/grid toggle, filtering, tab indicator. */
+export const layoutSpring: Transition = { type: "spring", stiffness: 420, damping: 38, mass: 0.8 };
 
-/** Stacking section cards: scale range as the next card slides over. */
-export const stack = { scaleTo: 0.94, fadeTo: 0 } as const;
+export const fade: Transition = { duration: 0.25, ease };

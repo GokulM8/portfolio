@@ -1,83 +1,71 @@
-import { ArrowDown, Download } from "lucide-react";
+import Image from "next/image";
 import { site } from "@/content/site";
-import { ButtonLink } from "./button";
-import { HeroIllustration } from "./hero-illustration";
-import { Magnetic } from "./magnetic";
-import { PauseOffscreen } from "./pause-offscreen";
-import { RotatingRole } from "./rotating-role";
-import { StackCard } from "./stack-card";
+import { GithubIcon, LinkedinIcon } from "./icons";
+import { RollText } from "./roll-text";
 
 const d = (s: number) => ({ ["--d" as string]: `${s}s` });
 
 export function Hero() {
-  const [first, ...rest] = site.name.split(" ");
   return (
-    <StackCard id="home" label="Introduction" className="px-5 pt-36 pb-6 sm:px-10 sm:pt-52">
-      <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-        <p className="fade-up inline-flex items-center gap-2 rounded-full bg-accent-soft px-3.5 py-1.5 text-[13px] font-medium text-accent-ink" style={d(0)}>
-          <span className="relative flex size-2" aria-hidden>
-            <span className="absolute inset-0 animate-ping rounded-full bg-accent opacity-60 motion-reduce:hidden" />
-            <span className="relative size-2 rounded-full bg-accent" />
-          </span>
-          {site.status}
-        </p>
-
-        <h1 className="mt-8 font-display text-ink">
-          <span className="mask-line">
-            <span style={d(0.05)} className="text-[clamp(1.5rem,3.2vw,2.25rem)] leading-tight text-ink-soft">
-              Hi, I&rsquo;m
-            </span>
-          </span>
-          <span className="mask-line mt-1 text-[clamp(4.5rem,16vw,8.75rem)] leading-[0.88] tracking-[-0.03em]">
-            <span style={d(0.1)}>{first}</span>
-          </span>
-          <span className="mask-line text-[clamp(4.5rem,16vw,8.75rem)] leading-[0.88] tracking-[-0.03em]">
-            <span style={d(0.17)} className="pr-[0.06em] italic">
-              {rest.join(" ")}
-            </span>
-          </span>
-        </h1>
-
-        <p className="fade-up mt-9 text-[17px] text-ink sm:text-xl" style={d(0.35)}>
-          <RotatingRole roles={site.roles} />
-          <span className="hidden text-accent sm:inline" aria-hidden>
-            {" "}·{" "}
-          </span>
-          <span className="sr-only">, </span>
-          <span className="block text-ink-soft sm:inline">{site.tagline}</span>
-        </p>
-        <p className="fade-up mt-4 max-w-md text-pretty text-[15px] leading-relaxed text-ink-faint" style={d(0.42)}>
-          {site.oneLiner}
-        </p>
-
-        <div className="fade-up mt-10 flex flex-wrap items-center justify-center gap-3" style={d(0.5)}>
-          <Magnetic>
-            <ButtonLink href="#work">
-              View work <ArrowDown className="size-4" aria-hidden />
-            </ButtonLink>
-          </Magnetic>
-          <Magnetic>
-            <ButtonLink href={site.cv} download variant="secondary">
-              <Download className="size-4" aria-hidden /> Download CV
-            </ButtonLink>
-          </Magnetic>
+    <section id="top" aria-label="Introduction" className="mx-auto max-w-[1200px] px-4 pt-16 pb-20 sm:px-8 sm:pt-28 sm:pb-28">
+      <div className="fade-in flex items-center gap-3" style={d(0)}>
+        <Image
+          src={site.hero.portrait.src}
+          alt={site.hero.portrait.alt}
+          width={44}
+          height={44}
+          priority
+          className="size-11 rounded-full bg-surface object-cover ring-1 ring-line"
+        />
+        <div className="text-sm leading-tight">
+          <p className="font-medium text-ink">{site.name}</p>
+          <p className="mt-0.5 flex items-center gap-1.5 text-ink-faint">
+            <span className="size-1.5 rounded-full bg-accent" aria-hidden />
+            {site.status}
+          </p>
         </div>
       </div>
 
-      <PauseOffscreen className="fade-up mx-auto mt-14 max-w-[500px] sm:mt-20 text-ink">
-        <HeroIllustration className="h-auto w-full" />
-      </PauseOffscreen>
+      <RollText
+        as="h1"
+        mode="load"
+        text={site.hero.greeting}
+        className="mt-10 block text-[clamp(3.5rem,15vw,13rem)] leading-none font-semibold tracking-[-0.055em] text-ink sm:mt-14"
+      />
 
-      <div className="mt-6 border-t border-line pt-7 pb-3">
-        <p className="text-center text-[11px] font-medium tracking-[0.16em] text-ink-faint uppercase">{site.strip.heading}</p>
-        <ul className="mt-4 flex flex-wrap items-center justify-center gap-x-9 gap-y-3">
-          {site.strip.items.map((item) => (
-            <li key={item} className="font-display text-xl text-ink-soft sm:text-[22px]">
-              {item}
-            </li>
-          ))}
-        </ul>
+      <div className="mt-10 grid gap-10 border-t border-line pt-8 sm:mt-14 md:grid-cols-[1.4fr_1fr] md:gap-16">
+        <p className="fade-in max-w-xl text-lg text-pretty text-ink-soft sm:text-xl" style={d(0.35)}>
+          {site.hero.intro}
+        </p>
+        <dl className="fade-in grid grid-cols-2 gap-x-6 gap-y-5 text-sm" style={d(0.45)}>
+          <div>
+            <dt className="text-ink-faint">Focus</dt>
+            <dd className="mt-1 text-ink">Applied ML, health-tech</dd>
+          </div>
+          <div>
+            <dt className="text-ink-faint">Based in</dt>
+            <dd className="mt-1 text-ink">{site.location}</dd>
+          </div>
+          <div>
+            <dt className="text-ink-faint">Studying</dt>
+            <dd className="mt-1 text-ink">CS at VIT-AP, 2024–28</dd>
+          </div>
+          <div>
+            <dt className="text-ink-faint">Elsewhere</dt>
+            <dd className="mt-1 flex items-center gap-3 text-ink">
+              <a href={site.cv} download className="underline decoration-line-strong underline-offset-4 hover:decoration-ink">
+                Resume
+              </a>
+              <a href={site.socials.linkedin} target="_blank" rel="noreferrer" className="text-ink-soft hover:text-ink" aria-label="LinkedIn">
+                <LinkedinIcon className="size-4" />
+              </a>
+              <a href={site.socials.github} target="_blank" rel="noreferrer" className="text-ink-soft hover:text-ink" aria-label="GitHub">
+                <GithubIcon className="size-4" />
+              </a>
+            </dd>
+          </div>
+        </dl>
       </div>
-    </StackCard>
+    </section>
   );
 }

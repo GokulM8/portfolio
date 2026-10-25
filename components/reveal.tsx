@@ -16,7 +16,7 @@ const item: Variants = {
 
 type Props = { children: ReactNode; className?: string; as?: "div" | "ul" | "li" };
 
-/** Rises and fades its RevealItem children in, one after another, just before they're fully on screen. */
+/** Fades and rises its RevealItem children in, one after another, just before they're fully on screen. */
 export function Reveal({ children, className, as = "div" }: Props) {
   const reduce = useReducedMotion();
   const Tag = motion[as];
