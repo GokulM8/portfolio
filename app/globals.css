@@ -105,6 +105,9 @@
   overflow: hidden;
   vertical-align: top;
   height: 1.12em;
+  /* bleed so glyph overhang isn't clipped at tight tracking; net spacing unchanged */
+  padding-inline: 0.05em;
+  margin-inline: -0.05em;
 }
 .roll-stack {
   display: block;
@@ -155,6 +158,10 @@
   *::after {
     animation: none !important;
     transition: none !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
   }
   .js .roll-in-view:not([data-inview]) .roll-stack,
   .roll-hover:hover .roll-stack,

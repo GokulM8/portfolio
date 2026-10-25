@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: `${site.name} · ML Engineer`, template: `%s · ${site.name}` },
   description: site.description,
-  icons: { icon: "/favicon.svg", apple: "/favicon-180.png" },
-  openGraph: { type: "website", title: site.name, description: site.description, url: site.url },
-  twitter: { card: "summary_large_image", title: site.name, description: site.description },
+  alternates: { canonical: "/" },
+  openGraph: { type: "website", siteName: site.name, title: `${site.name} · ML Engineer`, description: site.description, url: site.url, locale: "en_IN" },
+  twitter: { card: "summary_large_image", title: `${site.name} · ML Engineer`, description: site.description },
 };
 
 export const viewport: Viewport = {

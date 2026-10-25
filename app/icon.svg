@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <style>
+    rect { fill: #111110 } text { fill: #fafaf9 }
+    @media (prefers-color-scheme: dark) { rect { fill: #f4f4f2 } text { fill: #111110 } }
+  </style>
+  <rect x="1" y="1" width="38" height="38" rx="11"/>
+  <text x="20" y="21" text-anchor="middle" dominant-baseline="central" font-family="Geist, -apple-system, system-ui, Segoe UI, Arial, sans-serif" font-weight="650" font-size="16" letter-spacing="-0.8">GM</text>
+</svg>

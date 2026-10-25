@@ -92,7 +92,8 @@ export function ProjectDialog({ project, onClose }: { project: Project; onClose:
         >
           <div className="flex items-start justify-between gap-6">
             <p className="pt-2 text-sm text-ink-faint">
-              {project.categories.join(" · ")} · {project.year}
+              {project.categories.join(" · ")}
+              {project.year && ` · ${project.year}`}
               {project.status === "in-progress" && " · In progress"}
             </p>
             <button

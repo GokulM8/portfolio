@@ -161,7 +161,7 @@ export function Projects({ projects }: { projects: readonly Project[] }) {
                     <span className="order-last col-span-2 text-[15px] text-ink-soft sm:order-none sm:col-span-1">{p.oneLiner}</span>
                     <span className="flex items-center gap-4 justify-self-end text-sm text-ink-faint">
                       <span className="hidden md:inline">{p.categories.join(", ")}</span>
-                      <span className="tabular-nums">{p.year}</span>
+                      {p.year && <span className="tabular-nums">{p.year}</span>}
                     </span>
                     {/* Touch devices get an inline thumbnail instead of the cursor preview (pure CSS, so it's right on first paint) */}
                     {p.image && (
@@ -186,7 +186,7 @@ export function Projects({ projects }: { projects: readonly Project[] }) {
                     </div>
                     <div className="mt-4 flex items-baseline justify-between gap-3">
                       <span className="text-xl font-medium tracking-[-0.03em] text-ink">{p.title}</span>
-                      <span className="text-sm text-ink-faint tabular-nums">{p.year}</span>
+                      {p.year && <span className="text-sm text-ink-faint tabular-nums">{p.year}</span>}
                     </div>
                     <p className="mt-1 text-[15px] text-ink-soft">{p.oneLiner}</p>
                     <div className="mt-2">

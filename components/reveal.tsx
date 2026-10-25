@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, type Variants } from "motion/react";
+import { motion, type Variants } from "motion/react";
 import type { ReactNode } from "react";
 import { ease, reveal } from "@/lib/motion";
 
@@ -16,14 +16,12 @@ const item: Variants = {
 
 type Props = { children: ReactNode; className?: string; as?: "div" | "ul" | "li" };
 
+// Always the same markup on server and client (branching on reduced motion here caused a hydration
+// mismatch that left items at opacity 0). Reduced motion and no-JS are handled in CSS via [data-reveal].
+
 /** Fades and rises its RevealItem children in, one after another, just before they're fully on screen. */
 export function Reveal({ children, className, as = "div" }: Props) {
-  const reduce = useReducedMotion();
   const Tag = motion[as];
-  if (reduce) {
-    const Plain = as;
-    return <Plain className={className}>{children}</Plain>;
-  }
   return (
     <Tag data-reveal className={className} variants={container} initial="hidden" whileInView="show" viewport={reveal.viewport}>
       {children}
@@ -32,12 +30,7 @@ export function Reveal({ children, className, as = "div" }: Props) {
 }
 
 export function RevealItem({ children, className, as = "div" }: Props) {
-  const reduce = useReducedMotion();
   const Tag = motion[as];
-  if (reduce) {
-    const Plain = as;
-    return <Plain className={className}>{children}</Plain>;
-  }
   return (
     <Tag data-reveal className={className} variants={item}>
       {children}

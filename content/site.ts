@@ -34,27 +34,36 @@ export type Project = {
   image?: { src: string; alt: string };
 };
 
-export type Paper = {
+export type Post = {
   title: string;
+  /** Two lines at most. */
   summary: string;
-  /** SSRN link for this specific paper. Leave empty to hide the "Paper" link. */
-  paper: string;
-  source?: string;
-  demo?: string;
+  /** e.g. "2026" or "Mar 2026". Leave empty to hide. */
+  date: string;
+  /** Leave empty to hide the link. */
+  url: string;
+  kind: "Paper" | "Post";
+};
+
+export type Hackathon = {
+  name: string;
+  level: "International" | "National" | "College";
+  result: string;
+  year: string;
+  team?: string;
+  track?: string;
+  roles: string[];
+  certificate?: string;
+  highlight?: boolean;
 };
 
 export const site = {
   name: "Gokul Mallabathula",
-  firstName: "Gokul",
   url: "https://portfolio-gilt-gamma-53.vercel.app",
   email: "gokulmallabathula@gmail.com",
   cv: "/Gokul-Mallabathula-Resume.pdf",
   location: "Vijayawada, India",
   status: "Open to internships",
-  roles: ["ML Engineer", "Applied AI builder", "Health-tech tinkerer"],
-  tagline: "Building applied AI systems",
-  oneLiner:
-    "CS undergrad at VIT-AP turning messy real-world data into models people can actually use, with a soft spot for health-tech.",
   description:
     "Gokul Mallabathula: ML engineer and CS undergrad at VIT-AP building applied AI/ML and health-tech systems.",
   socials: {
@@ -76,36 +85,13 @@ export const site = {
     portrait: { src: "/portrait.webp", alt: "Illustrated avatar of Gokul" }, // TODO: swap for a real photo
   },
 
-  strip: {
-    heading: "Worked with & competed at",
-    items: [
-      "FlyRank AI",
-      "Zetheta Algorithms",
-      "VIT-AP University",
-      "USAII Global AI Hackathon",
-      "Smart India Hackathon",
-    ],
-  },
-
-  about: {
-    bio: [
-      "I'm a Computer Science undergrad at VIT-AP (2024–2028) who likes the unglamorous middle of machine learning: cleaning the data, questioning the metric, and getting a model into a product someone can open on their phone.",
-      "Most of my work sits at the edge of applied AI and health-tech, from explainable cardiovascular risk scoring to multilingual assistants for rural communities.",
-    ],
-    approach: [
-      { title: "Understand the problem deeply", body: "Talk to the data and the people behind it before picking a model." },
-      { title: "Build data-driven solutions", body: "Baselines first, honest validation, and explanations users can trust." },
-      { title: "Ship clean, scalable code", body: "Small, typed, deployable pieces that keep working after the demo." },
-    ],
-  },
-
-  // Live projects first. TODO: confirm each year.
+  // Live projects first. Years left empty ("") are hidden until you confirm them.
   projects: [
     {
       slug: "safepulse",
       title: "SafePulse",
       oneLiner: "Explainable cardiovascular risk prediction",
-      year: "2026",
+      year: "", // TODO: confirm year
       categories: ["ML"],
       status: "live",
       metrics: [
@@ -155,7 +141,7 @@ export const site = {
       slug: "smart-park",
       title: "Smart Park",
       oneLiner: "Real-time parking management",
-      year: "2026",
+      year: "", // TODO: confirm year
       categories: ["Full-stack"],
       status: "live",
       metrics: [
@@ -178,7 +164,7 @@ export const site = {
       slug: "care-transition-analytics",
       title: "Care Transition Analytics",
       oneLiner: "U.S. UAC care-pipeline analysis, published on SSRN",
-      year: "2026",
+      year: "", // TODO: confirm year
       categories: ["Research"],
       status: "research",
       metrics: [
@@ -197,7 +183,7 @@ export const site = {
       slug: "buyer-segmentation",
       title: "Buyer Segmentation",
       oneLiner: "Clustering real-estate investor profiles, published on SSRN",
-      year: "2026",
+      year: "", // TODO: confirm year
       categories: ["ML", "Research"],
       status: "research",
       metrics: [
@@ -215,7 +201,7 @@ export const site = {
       slug: "archlens-ai",
       title: "ArchLens AI",
       oneLiner: "Code-to-architecture graphs with grounded AI explanations",
-      year: "2026",
+      year: "", // TODO: confirm year
       categories: ["ML", "Full-stack"],
       status: "in-progress",
       metrics: [],
@@ -233,7 +219,7 @@ export const site = {
       slug: "deepfake-shield",
       title: "DeepFake Shield",
       oneLiner: "Multimodal forensics for AI-generated media",
-      year: "2026",
+      year: "", // TODO: confirm year
       categories: ["ML"],
       status: "in-progress",
       metrics: [],
@@ -249,60 +235,100 @@ export const site = {
     },
   ] satisfies Project[],
 
-  research: {
-    title: "Research on SSRN",
-    papers: [
+  about: {
+    academic: {
+      degree: "B.Tech, Computer Science & Engineering",
+      school: "VIT-AP University",
+      period: "2024 – 2028",
+      cgpa: "8.37",
+      focus: "Machine learning, data science and applied AI, with coursework and projects leaning towards health-tech.",
+    },
+    experience: [
       {
-        title: "Buyer Segmentation & Investment Profiling",
-        summary: "K-Means and hierarchical clustering to profile real-estate investor types from Parcl market data.",
-        paper: "", // TODO: this paper's own SSRN link
-        source: "https://github.com/GokulM8/Buyer-Segmentation-and-Investment-Profiling",
+        role: "Machine Learning Engineer Intern",
+        company: "FlyRank AI",
+        period: "Jul – Aug 2026",
+        points: ["Search optimization", "NLP & ranking", "Embeddings & clustering", "Intent modeling"],
       },
       {
-        title: "Care Transition Analytics",
-        summary: "U.S. UAC care-pipeline analysis with 5 custom KPIs and an interactive Streamlit dashboard.",
-        paper: "https://papers.ssrn.com/abstract=6811798", // TODO: confirm this is the Care Transition paper
-        source: "https://github.com/GokulM8/Care-Transition-CBP",
-        demo: "https://care-transition-cbp-ov9vzm4nnkreiaowsz6guy.streamlit.app/",
+        role: "Fraud Detection Engineer Intern",
+        company: "Zetheta Algorithms",
+        period: "Jan – Mar 2026",
+        points: ["Anomaly detection", "Blockchain analysis", "Cybersecurity"],
       },
-    ] satisfies Paper[],
+    ],
+    stack: [
+      { tier: "Proficient", items: ["Python", "Pandas", "Scikit-learn", "XGBoost", "SQL", "Git", "React / Next.js", "TypeScript"] },
+      { tier: "Intermediate", items: ["TensorFlow", "SHAP", "ONNX", "FastAPI / Flask", "Supabase", "Docker", "Tailwind"] },
+      { tier: "Learning", items: [] as string[] }, // TODO: fill in; the row stays hidden while empty
+    ],
+    info: [
+      { label: "Based in", value: "Vijayawada, India" },
+      { label: "Focus", value: "Applied ML & AI systems" },
+      { label: "Open to", value: "Internships and research collaborations" },
+    ],
   },
 
-  experience: [
-    {
-      role: "Machine Learning Engineer Intern",
-      company: "FlyRank AI",
-      period: "Jul – Aug 2026",
-      points: ["Search optimization", "NLP & ranking", "Embeddings & clustering", "Intent modeling"],
-    },
-    {
-      role: "Fraud Detection Engineer Intern",
-      company: "Zetheta Algorithms",
-      period: "Jan – Mar 2026",
-      points: ["Anomaly detection", "Blockchain transaction analysis"],
-    },
-  ],
-
-  stats: [
-    { value: "2", label: "internships" },
-    { value: "2", label: "research papers" },
-    { value: "5", label: "hackathons" },
-  ],
-
   hackathons: [
-    { name: "USAII Global AI Hackathon 2026", result: "Finalist", level: "International", highlight: true, certificate: "/certificate-of-finalist.png" },
-    { name: "Smart India Hackathon 2025", result: "Round 2", level: "National" },
-    { name: "Adobe University Hackathon 2026", result: "Round 2", level: "National" },
-    { name: "Smart India Hackathon 2026", result: "Participant", level: "National" },
-    { name: "Radiothon Winter 2026", result: "Participant", level: "College" },
-  ],
+    {
+      name: "USAII Global AI Hackathon",
+      level: "International",
+      result: "Final Round Finalist",
+      year: "2026",
+      team: "Team ByteCoders",
+      roles: ["Team Lead", "Frontend", "Backend", "API Designer", "Supabase / DB", "AI / Gemini Integration", "UI/UX Design"],
+      certificate: "/certificate-of-finalist.png",
+      highlight: true,
+    },
+    { name: "Smart India Hackathon", level: "National", result: "Round 2 Qualifier", year: "2025", team: "Team Shark", roles: ["Backend Designer", "Supabase / DB"] },
+    {
+      name: "Adobe University Hackathon",
+      level: "National",
+      result: "Round 2 Qualifier",
+      year: "2026",
+      track: "AI + Brand Visibility",
+      roles: ["AI / Agents", "Product Thinking", "UI/UX Design", "Software Development"],
+    },
+    {
+      name: "Smart India Hackathon",
+      level: "National",
+      result: "Participant",
+      year: "2026",
+      track: "Software + AI + Emerging Technologies",
+      roles: ["Team Lead", "ML Engineer", "Quantum Machine Learning", "Software Development"],
+    },
+    {
+      name: "Radiothon Winter",
+      level: "College",
+      result: "Participant",
+      year: "2026",
+      team: "Team Doom",
+      roles: ["Team Lead", "ML Engineer", "AI / ML Integration", "Supabase / DB", "API Designer"],
+    },
+  ] satisfies Hackathon[],
 
-  skills: [
-    { group: "ML / Data", items: ["Python", "Pandas", "scikit-learn", "XGBoost", "TensorFlow", "SHAP", "ONNX"] },
-    { group: "Backend", items: ["Flask", "FastAPI", "Node.js", "Supabase"] },
-    { group: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS"] },
-    { group: "Tools", items: ["Git", "Docker", "Streamlit", "Vercel", "CI/CD"] },
-  ],
+  // Papers and future posts. Add entries here; empty date/url fields stay hidden.
+  writing: [
+    {
+      kind: "Paper",
+      title: "Care Transition Analytics",
+      summary: "An analysis of the U.S. UAC care pipeline with five custom KPIs and an interactive dashboard, published on SSRN.",
+      date: "", // TODO
+      url: "https://papers.ssrn.com/abstract=6811798", // TODO: confirm this is the Care Transition paper
+    },
+    {
+      kind: "Paper",
+      title: "Buyer Segmentation & Investment Profiling",
+      summary: "K-Means and hierarchical clustering on Parcl market data to profile distinct real-estate investor types, published on SSRN.",
+      date: "", // TODO
+      url: "", // TODO: this paper's own SSRN link
+    },
+  ] satisfies Post[],
+
+  contact: {
+    closing: "Let’s build something",
+    availability: "Currently open to internships and research collaborations.",
+  },
 } as const;
 
 export type Site = typeof site;
