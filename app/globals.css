@@ -1,0 +1,238 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  --bg: oklch(0.968 0.008 80);
+  --card: oklch(0.991 0.004 80);
+  --card-2: oklch(0.952 0.01 78);
+  --ink: oklch(0.19 0.01 60);
+  --ink-soft: oklch(0.42 0.012 60);
+  --ink-faint: oklch(0.58 0.01 60);
+  --line: oklch(0.19 0.01 60 / 0.08);
+  --line-strong: oklch(0.19 0.01 60 / 0.14);
+  --accent: oklch(0.6 0.14 42);
+  --accent-ink: oklch(0.5 0.13 40);
+  --accent-soft: oklch(0.93 0.035 50);
+  --highlight: oklch(1 0 0 / 0.9);
+  --shadow-card:
+    0 1px 1px oklch(0.3 0.02 60 / 0.03), 0 4px 10px -2px oklch(0.3 0.02 60 / 0.04),
+    0 24px 48px -20px oklch(0.3 0.02 60 / 0.1);
+  --shadow-float:
+    0 1px 2px oklch(0.3 0.02 60 / 0.05), 0 8px 20px -6px oklch(0.3 0.02 60 / 0.1),
+    0 32px 64px -24px oklch(0.3 0.02 60 / 0.16);
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: oklch(0.165 0.006 60);
+    --card: oklch(0.2 0.007 60);
+    --card-2: oklch(0.235 0.008 60);
+    --ink: oklch(0.95 0.008 80);
+    --ink-soft: oklch(0.76 0.01 75);
+    --ink-faint: oklch(0.62 0.01 70);
+    --line: oklch(0.95 0.008 80 / 0.08);
+    --line-strong: oklch(0.95 0.008 80 / 0.14);
+    --accent: oklch(0.72 0.13 48);
+    --accent-ink: oklch(0.78 0.11 50);
+    --accent-soft: oklch(0.3 0.04 45);
+    --highlight: oklch(1 0 0 / 0.06);
+    --shadow-card: 0 1px 1px oklch(0 0 0 / 0.2), 0 4px 10px -2px oklch(0 0 0 / 0.2), 0 24px 48px -20px oklch(0 0 0 / 0.5);
+    --shadow-float: 0 1px 2px oklch(0 0 0 / 0.3), 0 8px 20px -6px oklch(0 0 0 / 0.35), 0 32px 64px -24px oklch(0 0 0 / 0.6);
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: oklch(0.165 0.006 60);
+  --card: oklch(0.2 0.007 60);
+  --card-2: oklch(0.235 0.008 60);
+  --ink: oklch(0.95 0.008 80);
+  --ink-soft: oklch(0.76 0.01 75);
+  --ink-faint: oklch(0.62 0.01 70);
+  --line: oklch(0.95 0.008 80 / 0.08);
+  --line-strong: oklch(0.95 0.008 80 / 0.14);
+  --accent: oklch(0.72 0.13 48);
+  --accent-ink: oklch(0.78 0.11 50);
+  --accent-soft: oklch(0.3 0.04 45);
+  --highlight: oklch(1 0 0 / 0.06);
+  --shadow-card: 0 1px 1px oklch(0 0 0 / 0.2), 0 4px 10px -2px oklch(0 0 0 / 0.2), 0 24px 48px -20px oklch(0 0 0 / 0.5);
+  --shadow-float: 0 1px 2px oklch(0 0 0 / 0.3), 0 8px 20px -6px oklch(0 0 0 / 0.35), 0 32px 64px -24px oklch(0 0 0 / 0.6);
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-card-2: var(--card-2);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-instrument), ui-serif, Georgia, serif;
+  --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    background-color: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    /* Grain scrolls with the page (no background-attachment: fixed, so no repaint on scroll). */
+    background: var(--grain) repeat, var(--bg);
+    font-family: var(--font-sans);
+    line-height: 1.65;
+  }
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
+  section[id] {
+    scroll-margin-top: 96px;
+  }
+}
+
+@layer components {
+  /* Card surfaces: hairline border, inner top highlight, layered soft shadow on a static pseudo-element. */
+  .surface-card,
+  .surface {
+    background-color: var(--card);
+    border: 1px solid var(--line);
+    box-shadow: inset 0 1px 0 var(--highlight);
+  }
+  .surface-card::before,
+  .surface::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    box-shadow: var(--shadow-card);
+    pointer-events: none;
+    z-index: -1;
+  }
+  .surface-card,
+  .surface {
+    isolation: isolate;
+  }
+  .surface {
+    position: relative;
+  }
+}
+
+/* Project cards: a deeper shadow fades in on hover (opacity only; the shadow itself never animates). */
+.hover-lift::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  box-shadow: var(--shadow-float);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-calm);
+  pointer-events: none;
+  z-index: -1;
+}
+@media (hover: hover) {
+  .hover-lift:hover::after {
+    opacity: 1;
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Hero: mask slide in CSS, so it plays before (and without) hydration */
+@keyframes rise-in {
+  from { transform: translateY(105%); }
+  to { transform: translateY(0); }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.mask-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+.mask-line > span {
+  display: block;
+  animation: rise-in 0.7s var(--ease-calm) both;
+  animation-delay: var(--d, 0s);
+}
+.fade-up {
+  animation: fade-up 0.5s var(--ease-calm) both;
+  animation-delay: var(--d, 0s);
+}
+
+/* Illustration: two loops (lamp sway, steam) plus a blink every 6s. Paused off screen. */
+@keyframes sway {
+  0%, 100% { transform: rotate(-2.5deg); }
+  50% { transform: rotate(2.5deg); }
+}
+@keyframes steam {
+  0% { opacity: 0; transform: translateY(6px); }
+  30% { opacity: 0.9; }
+  100% { opacity: 0; transform: translateY(-14px); }
+}
+@keyframes blink {
+  0%, 96%, 100% { transform: scaleY(1); }
+  98% { transform: scaleY(0.1); }
+}
+.anim-sway {
+  transform-box: view-box;
+  animation: sway 5s ease-in-out infinite;
+}
+.anim-steam {
+  animation: steam 3.2s ease-out infinite;
+  animation-delay: var(--d, 0s);
+}
+.anim-blink {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: blink 6s linear infinite;
+}
+[data-paused] * {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.001ms !important;
+  }
+  .anim-steam {
+    animation: none !important;
+    opacity: 0.6;
+  }
+}
