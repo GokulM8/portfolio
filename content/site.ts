@@ -114,19 +114,23 @@ export const site = {
       oneLiner: "Explainable cardiovascular risk prediction",
       categories: ["ML"],
       status: "live",
+      // Held-out test set (184 rows), untouched by tuning and calibration
       metrics: [
-        { value: "", label: "ROC-AUC" }, // TODO: add your AUC, e.g. "0.91"
-        { value: "2", label: "clinical datasets" },
-        { value: "SHAP", label: "per-patient explanations" },
+        { value: "0.915", label: "ROC-AUC, held-out test" },
+        { value: "86.4%", label: "accuracy, held-out test" },
+        { value: "0.108", label: "Brier score, held-out test" },
       ],
       problem:
         "Heart disease is one of India's leading causes of death, yet most risk calculators hand back a single number with no reason attached. Patients and clinicians can't act on a score they can't question.",
       approach: [
         "Merged the UCI Heart Disease and Framingham datasets into one harmonised training set.",
-        "Trained an XGBoost classifier, validated on held-out data, and exported it to ONNX for fast, portable inference.",
-        "Used SHAP to break every prediction into per-feature contributions.",
+        "Held out 20% of the data (184 rows) as an untouched test set, then tuned a gradient-boosted model with cross-validation (best CV ROC-AUC 0.88) and calibrated its probabilities.",
+        "Exported the model to ONNX for fast, portable inference, and used SHAP to break every prediction into per-feature contributions.",
       ],
-      results: ["A risk score that explains itself: the factors pushing it up or down, per patient."],
+      results: [
+        "On the held-out test set: ROC-AUC 0.915, accuracy 86.4% and a Brier score of 0.108.",
+        "A calibrated risk score that explains itself: the factors pushing it up or down, per patient.",
+      ],
       stack: ["Python", "XGBoost", "ONNX", "SHAP"],
       live: "https://safe-pulse-six.vercel.app/",
     },
@@ -297,14 +301,13 @@ export const site = {
   ] satisfies Hackathon[],
 
   // Papers and future posts. Empty date/url fields stay hidden.
-  // Known SSRN link, paper not yet confirmed: https://papers.ssrn.com/abstract=6811798
   writing: [
     {
       kind: "Paper",
       title: "Care Transition Analytics",
       summary: "An analysis of the U.S. UAC care pipeline with five custom KPIs and an interactive dashboard, published on SSRN.",
       date: "", // TODO
-      url: "", // TODO
+      url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6811798",
       cover: "care-transition",
     },
     {
@@ -312,7 +315,7 @@ export const site = {
       title: "Buyer Segmentation & Investment Profiling",
       summary: "K-Means and hierarchical clustering on Parcl market data to profile distinct real-estate investor types, published on SSRN.",
       date: "", // TODO
-      url: "", // TODO
+      url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6881578",
       cover: "buyer-segmentation",
     },
   ] satisfies Post[],
