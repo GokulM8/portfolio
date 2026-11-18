@@ -190,7 +190,7 @@ export const site = {
       title: "ArchLens AI",
       oneLiner: "Code-to-architecture graphs with grounded AI explanations",
       categories: ["ML", "Full-stack"],
-      status: "in-progress",
+      status: "live",
       metrics: [],
       problem: "Large codebases hide their real architecture; diagrams drift and AI summaries hallucinate structure that isn't there.",
       approach: [
@@ -198,8 +198,9 @@ export const site = {
         "Flag architectural health risks from the graph itself.",
         "Ground every AI explanation and refactoring suggestion in that graph.",
       ],
-      results: ["In progress."],
+      results: ["Deployed and live."],
       stack: ["FastAPI", "NetworkX", "Pydantic", "OpenAI"],
+      live: "https://archlens-frontend.onrender.com",
       source: "https://github.com/GokulM8/ArchLens-AI",
     },
     {
