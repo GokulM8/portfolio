@@ -18,6 +18,7 @@ const personLd = {
   jobTitle: "Machine Learning Engineer",
   description: site.description,
   address: { "@type": "PostalAddress", addressLocality: "Vijayawada", addressCountry: "IN" },
+  worksFor: { "@type": "Organization", name: "Cynbit Technologies" },
   alumniOf: { "@type": "CollegeOrUniversity", name: site.about.academic.school },
   knowsAbout: ["Machine learning", "Applied AI", "Health-tech", "Data science"],
   sameAs: [site.socials.linkedin, site.socials.github],

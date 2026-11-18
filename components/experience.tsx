@@ -3,7 +3,7 @@
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { Plus } from "lucide-react";
 import { useRef, useState } from "react";
-import { site } from "@/content/site";
+import { site, type Role } from "@/content/site";
 import { ease, layoutSpring } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import { SectionHeading, sectionClass } from "./section-heading";
@@ -32,6 +32,11 @@ export function Experience() {
             {roles.map((r, i) => {
               const isOpen = open === i;
               const panelId = `role-${i}-details`;
+              // Optional fields only some roles set; empty entries stay hidden.
+              const extra: Pick<Role, "current" | "results" | "metrics"> = r;
+              const current = extra.current === true;
+              const results = (extra.results ?? []).filter(Boolean);
+              const metrics = (extra.metrics ?? []).filter((m) => m.value).slice(0, 3);
               return (
                 <motion.li key={r.company} layout={reduce ? false : "position"} transition={layoutSpring} className="relative border-b border-line">
                   <span className="absolute top-[34px] -left-6 size-[7px] -translate-x-[3px] rounded-full bg-ink sm:-left-10 sm:top-[38px]" aria-hidden />
@@ -45,6 +50,12 @@ export function Experience() {
                     <span className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
                       <span className="text-2xl font-semibold tracking-[-0.03em] text-ink sm:text-[28px]">{r.role}</span>
                       <span className="flex items-center gap-4 font-mono text-[12.5px] text-ink-faint tabular-nums">
+                        {current && (
+                          <span className="flex items-center gap-1.5 text-ink-soft">
+                            <span className="current-dot size-1.5 rounded-full bg-accent" aria-hidden />
+                            Current
+                          </span>
+                        )}
                         {r.period}
                         <Plus className={cn("size-4 transition-transform duration-300 ease-[var(--ease-out-expo)]", isOpen && "rotate-45")} aria-hidden />
                       </span>
@@ -91,6 +102,16 @@ export function Experience() {
                             <dd className="mt-1 text-ink">{r.tags.join(", ")}</dd>
                           </div>
                         </dl>
+                        {metrics.length > 0 && (
+                          <dl className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+                            {metrics.map((m) => (
+                              <div key={m.label} className="flex flex-col-reverse">
+                                <dt className="mt-1 font-mono text-[11.5px] text-ink-faint">{m.label}</dt>
+                                <dd className="text-2xl font-semibold tracking-[-0.03em] text-ink tabular-nums">{m.value}</dd>
+                              </div>
+                            ))}
+                          </dl>
+                        )}
                         {r.details.length > 0 && (
                           <ul className="grid gap-1.5">
                             {r.details.map((line) => (
@@ -100,6 +121,19 @@ export function Experience() {
                               </li>
                             ))}
                           </ul>
+                        )}
+                        {results.length > 0 && (
+                          <div>
+                            <p className="font-mono text-[11.5px] text-ink-faint">Results</p>
+                            <ul className="mt-2 grid gap-1.5">
+                              {results.map((line) => (
+                                <li key={line} className="flex gap-3 text-ink-soft">
+                                  <span className="mt-[11px] h-px w-3 shrink-0 bg-ink-faint" aria-hidden />
+                                  {line}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
                         )}
                       </motion.div>
                     )}

@@ -61,7 +61,13 @@ export type Role = {
   summary: string[];
   /** Extra lines shown when the row is expanded. */
   details: string[];
+  /** Outcomes shown when the row is expanded. Leave empty to hide. */
+  results?: string[];
+  /** Up to 3 shown when the row is expanded. Leave value empty ("") to hide one. */
+  metrics?: Metric[];
   tags: string[];
+  /** Shows a "Current" marker next to the dates. */
+  current?: boolean;
 };
 
 export type Hackathon = {
@@ -82,9 +88,9 @@ export const site = {
   email: "gokulmallabathula@gmail.com",
   resume: { href: "/resume.pdf", fileName: "Gokul-Mallabathula-Resume.pdf" },
   location: "Vijayawada, India",
-  status: "Open to internships",
+  status: "3 internships · now at Cynbit Technologies",
   description:
-    "Gokul Mallabathula: ML engineer and CS undergrad at VIT-AP building applied AI/ML and health-tech systems.",
+    "Gokul Mallabathula: ML engineer and CS undergrad at VIT-AP building applied AI/ML and health-tech systems. 3 internships, currently at Cynbit Technologies.",
   socials: {
     linkedin: "https://www.linkedin.com/in/gokul-mallabathula-693a74118/",
     github: "https://www.github.com/GokulM8",
@@ -230,12 +236,28 @@ export const site = {
     info: [
       { label: "Based in", value: "Vijayawada, India" },
       { label: "Focus", value: "Applied ML & AI systems" },
-      { label: "Open to", value: "Internships and research collaborations" },
+      { label: "Experience", value: "3 internships in applied ML" },
+      { label: "Availability", value: "Currently interning at Cynbit Technologies · Open to future internships and research collaborations" },
     ],
   },
 
   // Wording from your resume. `details` show when a row is expanded.
   experience: [
+    {
+      role: "AI/ML Engineer Intern",
+      company: "Cynbit Technologies (BitElevate program)",
+      period: "Nov 2026 – Present",
+      duration: "60-day program, ongoing",
+      current: true,
+      summary: [
+        "Building SupportPulse AI, an intelligent support assistant that classifies customer tickets and searches documentation with vector embeddings.",
+        "60-day engineering program: daily feature-branch tasks shipped as reviewed pull requests.",
+      ],
+      details: [],
+      results: [], // TODO: add outcomes when the program wraps up
+      metrics: [], // TODO: e.g. { value: "0.92", label: "ticket classification F1" }
+      tags: ["NLP", "Text Classification", "Vector Embeddings", "Semantic Search", "Git workflow"],
+    },
     {
       role: "Machine Learning Engineer Intern",
       company: "FlyRank AI",

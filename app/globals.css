@@ -188,6 +188,17 @@
   animation-delay: var(--d, 0s);
 }
 
+/* "Current" marker on the Experience timeline: a gentle opacity/scale breath, motion-safe only */
+@media (prefers-reduced-motion: no-preference) {
+  .current-dot {
+    animation: current-pulse 2.4s ease-in-out infinite;
+  }
+}
+@keyframes current-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.8); }
+}
+
 /* ---------- Generative covers: hover motion (transform / opacity only) ----------
    Covers rest in their final pose; these run only while a .cover-host is hovered with a fine pointer. */
 .cv-pulse,
