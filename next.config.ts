@@ -11,8 +11,8 @@ const nextConfig: NextConfig = {
       { source: "/experience", destination: "/#experience", permanent: true },
       { source: "/skills", destination: "/#about", permanent: true },
       { source: "/projects", destination: "/#projects", permanent: true },
-      { source: "/static/assets/Gokul-Mallabathula-Resume.pdf", destination: "/resume.pdf", permanent: true },
-      { source: "/Gokul-Mallabathula-Resume.pdf", destination: "/resume.pdf", permanent: true },
+      { source: "/static/assets/Gokul-Mallabathula-Resume.pdf", destination: "/Resume.pdf", permanent: true },
+      { source: "/Gokul-Mallabathula-Resume.pdf", destination: "/Resume.pdf", permanent: true },
       { source: "/static/assets/certificate-of-finalist.png", destination: "/certificate-of-finalist.png", permanent: true },
     ];
   },

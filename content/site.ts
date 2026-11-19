@@ -86,7 +86,7 @@ export const site = {
   name: "Gokul Mallabathula",
   url: "https://portfolio-gilt-gamma-53.vercel.app",
   email: "gokulmallabathula@gmail.com",
-  resume: { href: "/resume.pdf", fileName: "Gokul-Mallabathula-Resume.pdf" },
+  resume: { href: "/Resume.pdf", fileName: "Gokul-Mallabathula-Resume.pdf" },
   location: "Vijayawada, India",
   status: "3 internships · now at Cynbit Technologies",
   description:
